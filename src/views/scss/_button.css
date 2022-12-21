@@ -1,0 +1,15 @@
+.button {
+    padding: 0.8rem 2rem;
+    background: none;
+    border: 2px solid #000;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.188rem;
+    transition: 0.4s all;
+    cursor: pointer;
+}
+.button-secondary {
+    border-color: #aaa;
+    color: #aaa;
+}
