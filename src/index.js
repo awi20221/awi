@@ -4,7 +4,7 @@ console.log(process.env.JWT_SECRET);
 
 
 //enable styles in index.html file
-// require('./views/scss/style.scss')
+// require('./views/css/style.css')
 const express = require('express')
 const join = require('path')
 const config = require('../src/config/config')
