@@ -1,18 +1,27 @@
-import express from 'express';
-import { join } from 'path';
-import config from './config/config';
-import songs from './routes/songs';
-import { notFound, catchErrors } from './middlewares/errors';
-import bodyParser from 'body-parser';
-import register from 'babel-core/register';
-import babelPolyfill from 'babel-polyfill';
+const dotenv = require('dotenv')
+dotenv.config({ path: '.env' });
+console.log(process.env.JWT_SECRET);
+
 
 //enable styles in index.html file
-require('../src/views/scss/style.css')
+// require('./views/scss/style.scss')
+const express = require('express')
+const join = require('path')
+const config = require('../src/config/config')
+const songs = require('./routes/songs');
+const auth = require('./routes/auth');
+const passport = require('./config/passport')
+const { notFound, catchErrors } = require('./middlewares/errors')
+const bodyParser = require('body-parser')
+
 
 // Connect to database
-import dbConfig from './config/database';
-import mongoose from 'mongoose';
+const dbConfig = require('./config/database')
+const mongoose = require('mongoose')
+const path = require("path");
+
+//Configure passport
+passport.configJWT();
 
 mongoose.connect(dbConfig.mongoUrl, {
     useNewUrlParser: true,
@@ -27,25 +36,23 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 app.set('view engine', 'pug');
-app.set('views', join(__dirname, 'views'));
-app.use(express.static('public'));
+app.set('views', path.join(__dirname, 'views'));
+//konfiguracja dostepu do plikow statyczny, umozliwia ich importowanie
+app.use(express.static(path.join(__dirname,'views')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes config
-app.use('/api/songs', songs());
+app.use('/api/songs', songs.apiSongs());
+app.use('/api/auth', auth.apiAuth());
 
 // errors handling
 app.use(notFound);
 app.use(catchErrors);
 
-// let's play!
-app.listen(config.server.port, () => {
+// start listening
+app.listen(config.configValues.server.port, () => {
     console.log(`Server is up!`);
 });
 
 
-// app.post('/api/songs', (req, res) =>
-// {
-//
-// });

@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import URLSlugs from 'mongoose-url-slugs';
+const mongoose = require('mongoose');
+const URLSlugs = require('mongoose-url-slugs');
 
 const Song = mongoose.Schema({
     title: String
@@ -9,4 +9,6 @@ const Song = mongoose.Schema({
 
 Song.plugin(URLSlugs('title', { field: 'slug', update: true }));
 
-export default mongoose.model('Song', Song);
+const songModel = mongoose.model('Song', Song);
+
+module.exports = {songModel};

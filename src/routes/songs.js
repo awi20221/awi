@@ -1,24 +1,27 @@
-import { Router } from 'express';
-import { catchAsync } from "../middlewares/errors";
-import songsController from '../controllers/songsController';
+const Router =require('express');
+const { catchAsync } = require("../middlewares/errors");
+const songsController= require('../controllers/songsController');
 
-export default () => {
-    const api = Router();
 
-    // GET /songs/:slug
-    api.get('/:slug', catchAsync(songsController.findOne));
+    function apiSongs() {
+        const api = Router();
 
-    // GET /songs
-    api.get('/', catchAsync(songsController.findAll));
+        // GET /songs/:slug
+        api.get('/:slug', catchAsync(songsController.findOne));
 
-    // POST /songs
-    api.post('/', catchAsync(songsController.create));
+        // GET /songs
+        api.get('/', catchAsync(songsController.findAll));
 
-    // PUT /songs/:slug
-    api.put('/:slug', catchAsync(songsController.update));
+        // POST /songs
+        api.post('/', catchAsync(songsController.create));
 
-    // DELETE /songs/:slug
-    api.delete('/:slug', catchAsync(songsController.remove));
+        // PUT /songs/:slug
+        api.put('/:slug', catchAsync(songsController.update));
 
-    return api;
-}
+        // DELETE /songs/:slug
+        api.delete('/:slug', catchAsync(songsController.remove));
+
+        return api;
+    }
+
+    module.exports = {apiSongs};

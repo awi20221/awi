@@ -1,4 +1,4 @@
-import dburl from './database'
+const dburl = require('./database')
 // required environment variables
 // ['NODE_ENV','PORT'].forEach((name) => {
 //     if (!process.env[name]) {
@@ -6,11 +6,13 @@ import dburl from './database'
 //     }
 // });
 
-export default  {
+const configValues = {
     //env: process.env.NODE_ENV,
     server: {
         port: Number(process.env.PORT || 3000),
         database: process.env.DATABASE || dburl.mongoUrl
     }
 };
+
+module.exports = {configValues};
 
