@@ -4,26 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.scss" />
-    <title>AWI_nav</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>AWI</title>
   </head>
   <body>
     <nav>
       <div class="logo">
-        <img src="css/images/logo.png" alt="Logo z napisem AWI"/>
+        <img src="css/images/logo.png" alt="Logo z napisem AWI" />
       </div>
       <ul class="nav-links">
         <li>
-          <a href="#">HOME</a>
+          <a href="index.html">HOME</a>
         </li>
         <li>
-          <a href="#">SPÓŁKI</a>
+          <a href="html/spolki.html">SPÓŁKI</a>
         </li>
         <li>
-          <a href="#">KALKULATOR</a>
+          <a href="html/kalkulator.html">KALKULATOR</a>
         </li>
         <li>
-          <a href="#">HELP</a>
+          <a href="html/help.html">HELP</a>
         </li>
       </ul>
       <div class="burger">
@@ -33,17 +33,23 @@
       </div>
     </nav>
 
-    <div class="welcome-text">
+    <div id="welcome-text">
       <h1>Aplikacja<br />Wpomagajaca<br />Inwestycje</h1>
       <p>
         Witaj w aplikacji, która pozwoli Ci sprawdzić notowania spółek oraz
-        <br />mądrze zainwestować 
+        <br />skutecznie zainwestować
       </p>
       <div class="buttons">
-        <div class="logowanie"><b>Zaloguj się</b></div>
-        <div class="rejestracja"><b>Zarejestruj się</b></div>
+        <a href="html/login.html">
+          <div class="logowanie"><b>Zaloguj się</b></div>
+        </a>
+        <a href="html/register.html">
+          <div class="rejestracja"><b>Zarejestruj się</b></div>
+        </a>
       </div>
-      
+      <div class="copyright">
+        <p>2022 &copy; Aplikacja Wspomagająca Inwestycje</p>
+      </div>
     </div>
 
     <script src="../actions/nav_app.js"></script>

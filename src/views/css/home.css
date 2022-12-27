@@ -5,13 +5,17 @@ body {
   background-size: cover;
   background-position: center center;
   position: relative;
-  height: 100vh;
+  height: 100%;
+}
+
+a:link{
+  text-decoration:none;
 }
 
 /*TEKST*/
-.welcome-text {
+#welcome-text {
   width: 100%;
-  min-height: 92vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,14 +25,14 @@ body {
 }
 
 /*header*/
-.welcome-text h1 {
+#welcome-text h1 {
   text-align: center;
   color: rgb(255, 255, 255);
   font-size: 45px;
 }
 
 /*dalszy tekst*/
-.welcome-text p {
+#welcome-text p {
   padding: 10px 25px;
   text-decoration: none;
   font-size: 15px;
@@ -74,4 +78,10 @@ body {
 .rejestracja:hover {
   background-color: #ffffff;
   color: black;
+}
+
+.copyright {
+  padding: 5px;
+  position: absolute;
+  bottom: 2px;
 }
