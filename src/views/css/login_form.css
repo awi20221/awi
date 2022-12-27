@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  background: rgba(15, 236, 195, 0.838);
+  /*background: linear-gradient(to bottom right, var(--light), var(--dark));*/
+  background-image: linear-gradient(rgb(0, 0, 0), rgba(15, 236, 195, 0.14)),
+    url("images/background2.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  min-width: 100px;
+  width: 100px;
+  top: 5vh;
+  left: 5vw;
+  text-decoration: none;
+  position: absolute;
+}
+
+.logo img:hover {
+  opacity: 60%;
+}
+
+form {
+  background: rgba(255, 255, 255, 0.247);
+  box-shadow: 0px 0px 20px 0 rgba(255, 255, 255, 0.307);
+  max-width: 350px;
+  max-height: 100%;
+  border-radius: 25px;
+  padding: 76px 54px;
+  text-align: center;
+}
+
+.form-row {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+input,
+button {
+  background: rgba(255, 255, 255, 0.466);
+  box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.712);
+  border: none;
+  border-radius: 15px;
+  padding: 14px 44px;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgba(248, 248, 248, 0.781);
+  transition: box-shadow 0.3s, outline 0.3s;
+}
+
+input {
+  width: 100%;
+}
+
+label {
+  font-style: italic;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  left: 15px;
+  opacity: 0.6;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: text;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  opacity: 0;
+}
+
+input:hover,
+button:hover {
+  box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.407);
+}
+
+input:focus,
+button:focus {
+  outline: solid 3px rgba(255, 255, 255, 0.805);
+}
+
+button {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: rgb(22, 48, 43);
+  font-size: 17px;
+}
+
+button::after {
+  background: #ffffff5f;
+  content: "";
+  position: absolute;
+  left: -70px;
+  top: -30px;
+  transform: skewX(-20deg);
+  transition: left 0.3s linear;
+  display: block;
+  height: 80px;
+  width: 50px;
+}
+
+button:hover:after {
+  left: 110%;
+}
+
+.spacer-form {
+  background: #ffffffd5;
+  height: 2px;
+  margin: 0 auto 19px;
+  border-radius: 800%;
+  width: 100%;
+}
