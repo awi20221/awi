@@ -1,0 +1,21 @@
+@import "nav_bar.css";
+
+nav {
+    background: rgb(50, 50, 50);
+    position: sticky;
+    top: 0;
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      background: rgb(50, 50, 50);
+    }
+}
+
+body{
+    width:100vw;
+    height:100vh;
+    background: rgb(205, 196, 196);
+    margin:0;
+}
