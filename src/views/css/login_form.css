@@ -19,6 +19,7 @@ body {
   align-items: center;
 }
 
+
 .logo img {
   min-width: 100px;
   width: 100px;
@@ -38,12 +39,12 @@ form {
   max-width: 350px;
   max-height: 100%;
   border-radius: 25px;
-  padding: 76px 54px;
+  padding: 36px 54px;
   text-align: center;
 }
 
 .form-row {
-  margin-bottom: 32px;
+  margin-bottom: 22px;
   position: relative;
 }
 
@@ -53,7 +54,7 @@ button {
   box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.712);
   border: none;
   border-radius: 15px;
-  padding: 14px 44px;
+  padding: 14px 14px;
   font-size: 14px;
   font-weight: bold;
   color: rgba(248, 248, 248, 0.781);
@@ -83,7 +84,7 @@ button:hover {
 
 input:focus,
 button:focus {
-  outline: solid 3px rgba(255, 255, 255, 0.805);
+  outline: solid 3px rgba(255, 255, 255, 0.648);
 }
 
 button {
@@ -124,7 +125,7 @@ button:hover:after {
   border-radius: 50%;
   height: 92px;
   width: 92px;
-  margin: 0 auto 44px;
+  margin: 0 auto 34px;
   opacity: 0.6;
   overflow: hidden;
   position: relative;
@@ -153,4 +154,37 @@ button:hover:after {
   transform: translateX(-50%);
   display: block;
   position: absolute;
+}
+
+.simple-tekst {
+  margin: 15px auto 0;
+  position: relative;
+  color: rgba(248, 248, 248, 0.781);
+}
+
+.simple-tekst a {
+  font-size: 18px;
+  text-decoration: none;
+  color: rgb(22, 48, 43);
+  font-weight: bold;
+}
+
+.simple-tekst a:hover {
+  opacity: 0.8;
+}
+
+.copyright {
+  padding: 5px;
+  position: absolute;
+  bottom: 10px;
+  font-size: 15px;
+  color: #ebebebfc;
+}
+
+.register-icon img{
+  height: 70px;
+  width: 110px;
+  object-fit:cover;
+  opacity: 0.6;
+  margin-bottom: 10px ;
 }
