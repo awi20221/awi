@@ -10,9 +10,12 @@ const configValues = {
     //env: process.env.NODE_ENV,
     server: {
         port: Number(process.env.PORT || 3000),
-        database: process.env.DATABASE || dburl.mongoUrl
+        database: process.env.DATABASE || dburl.mongoUrl,
+        TOKEN_SECRET_JWT: 'jWt9982_s!tokenSecreTqQrtw'
     }
 };
+
+//TODO: przenieść secret token do osobnego pliku jak database
 
 module.exports = {configValues};
 

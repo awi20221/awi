@@ -1,6 +1,6 @@
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
-const User = require('../models/user');
+const User = require('../models/user').userModel;
 
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
@@ -22,7 +22,7 @@ function configJWT() {
         secretOrKey: process.env.JWT_SECRET
     };
 
-    passport.use(User.userModel.createStrategy());
+    passport.use(User.createStrategy());
     passport.use(new JWTStrategy(config, verifyCallback));
 }
 

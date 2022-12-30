@@ -1,17 +1,14 @@
-const Router = require('express');
-const { catchAsync } = require("../middlewares/errors");
-const AuthController =require('../controllers/authController');
+const express = require('express');
+const authController = require('../controllers/authController');
 const passport = require('passport');
 
 
 function apiAuth() {
-    const api = Router();
+    const api = express.Router();
 
-    api.get('/', AuthController.show);
+    api.post('/login', passport.authenticate('local', {session: false}), authController.login);
 
-    api.post('/login', passport.authenticate('local', {session: false}), AuthController.login);
-
-    api.post('/register', AuthController.register);
+    api.post('/register', authController.register);
 
     return api;
 }

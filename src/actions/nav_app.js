@@ -23,3 +23,4 @@ const navSlider = () => {
 };
 
 navSlider();
+

@@ -44,6 +44,14 @@ a:link {
 }
 
 /*przyciski logowaniea i rejestracji*/
+
+/*TODO: wylaczyc podkreslenie przycisku zaloguj sie ale nwm jak */
+.a {
+  text-decoration: none;
+  color: transparent;
+  text-underline-mode: none;
+}
+
 .buttons {
   display: flex;
   justify-content: space-around;
