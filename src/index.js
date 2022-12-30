@@ -6,12 +6,14 @@ dotenv.config({ path: '.env' });
 const express = require('express')
 const config = require('../src/config/config')
 const auth = require('./routes/auth');
-const users = require('./routes/users')
+const users = require('./routes/users');
+const currencies = require('./routes/currencies');
 const defaultUser = require('./config/defaultUser')
 const passport = require('./config/passport')
 const { notFound, catchErrors } = require('./middlewares/errors')
 const bodyParser = require('body-parser')
 const path = require('path');
+const cors = require('cors');
 
 //Configuration of server instance
 const app = express();
@@ -30,7 +32,7 @@ passport.configJWT();
 // Connect to database
 const dbConfig = require('./config/database')
 const mongoose = require('mongoose')
-const User = require("./models/user").userModel;
+// const User = require("./models/user").userModel;
 
 mongoose.connect(dbConfig.mongoUrl, {
     useNewUrlParser: true,
@@ -48,10 +50,14 @@ mongoose.connection.on('error', (err) => {
 defaultUser.initializeData().catch(err => console.log('Error: Cannot initialize admin account', err));
 
 
+
 // routes config
 app.use('/api/auth', auth.apiAuth());
 app.use('/api/users', users.apiUsers());
+app.use('/api/currencies', currencies.apiCurrencies());
 
+//configure CORS (cross-origin resource sharing) which enables fetching data from other domeins like NBP
+app.use(cors());
 
 // errors handling, czyli wywołania funckcji next z kontrolerów
 app.use(notFound);
