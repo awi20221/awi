@@ -33,6 +33,7 @@ passport.configJWT();
 const dbConfig = require('./config/database')
 const mongoose = require('mongoose')
 // const User = require("./models/user").userModel;
+// const currenciesController = require('./controllers/currenciesController')
 
 mongoose.connect(dbConfig.mongoUrl, {
     useNewUrlParser: true,
@@ -48,7 +49,6 @@ mongoose.connection.on('error', (err) => {
 
 //initialize admin account if there is none user in the database
 defaultUser.initializeData().catch(err => console.log('Error: Cannot initialize admin account', err));
-
 
 
 // routes config
@@ -70,7 +70,10 @@ async function listen() {
         console.log(`Listen port: ` + config.configValues.server.port);
     });
 }
-listen().catch(err => {
+listen()
+    .then(()=> {
+    })
+    .catch(err => {
     console.log("Server error: ", err);
 })
 

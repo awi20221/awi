@@ -16,10 +16,16 @@ const currencySchema = mongoose.Schema({
         mid: {
             type: Number,
             trim: true,
+        },
+        effectiveDate: {
+            type: String,
+            required: true,
+            trim: true
         }
     });
 
 currencySchema.plugin(URLSlugs('code',{field: 'slug', update: true}))
+
 
 
 const currencyModel = mongoose.model('currencies', currencySchema);
