@@ -1,4 +1,9 @@
 @import "nav_bar.css";
+*{
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+}
 
 body {
   background-image: linear-gradient(rgb(0, 0, 0), rgba(15, 236, 195, 0.14)),
@@ -44,13 +49,6 @@ a:link {
 }
 
 /*przyciski logowaniea i rejestracji*/
-
-/*TODO: wylaczyc podkreslenie przycisku zaloguj sie ale nwm jak */
-.a {
-  text-decoration: none;
-  color: transparent;
-  text-underline-mode: none;
-}
 
 .buttons {
   display: flex;

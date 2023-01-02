@@ -1,10 +1,14 @@
 @import "nav_bar.css";
+*{
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+}
 
 nav {
     background: rgb(50, 50, 50);
     position: sticky;
     top: 0;
-    padding: 10px;
   }
 
   @media screen and (max-width: 768px) {
