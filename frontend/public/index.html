@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="views/css/home.css" />
+    <title>AWI</title>
+    <script src="views/actions/nav_app.js" type="module"></script>
+    <script
+      src="../../node_modules/axios/dist/axios.min.js"
+      defer
+      type="module"
+    ></script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="views/css/images/logo.png" alt="Logo z napisem AWI" />
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">HOME</a>
+        </li>
+        <li>
+          <a href="views/html/spolki.html">SPÓŁKI</a>
+        </li>
+        <li>
+          <a href="views/html/kalkulator.html">KALKULATOR</a>
+        </li>
+        <li>
+          <a href="views/html/waluty.html">KURSY&nbsp;WALUT</a>
+        </li>
+        <li>
+          <a href="views/html/help.html">HELP</a>
+        </li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+
+    <div id="welcome-text">
+      <h1>Aplikacja<br />Wpomagajaca<br />Inwestycje</h1>
+      <p>
+        Witaj w aplikacji, która pozwoli Ci sprawdzić notowania spółek oraz
+        <br />skutecznie zainwestować
+      </p>
+      <div class="buttons">
+        <a href="views/html/login.html">
+          <div class="logowanie"><b>Zaloguj się</b></div>
+        </a>
+        <a href="views/html/register.html">
+          <div class="rejestracja"><b>Zarejestruj się</b></div>
+        </a>
+      </div>
+      <div class="copyright">
+        <p>2022 &copy; Aplikacja Wspomagająca Inwestycje</p>
+      </div>
+    </div>
+  </body>
+</html>

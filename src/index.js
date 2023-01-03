@@ -20,7 +20,8 @@ const cors = require('cors');
 const app = express();
 
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views')); //TUTAJ TRZEBA BEDZIE ZMIENIC SCIEZKE,
+// ALE NA RAZIE ZOSTAWILEM I TAK DOTYCHCZASOWE STYLE W FOLDERZE VIEWS
 
 //konfiguracja dostepu do plikow statyczny, umozliwia ich importowanie
 app.use(express.static(path.join(__dirname,'views')));
