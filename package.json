@@ -28,7 +28,8 @@
     "passport-local-mongoose": "^7.1.2",
     "pug": "^3.0.2",
     "sass": "^1.54.5",
-    "slugify": "^1.6.5"
+    "slugify": "^1.6.5",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",

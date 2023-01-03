@@ -8,6 +8,7 @@ const config = require('../src/config/config')
 const auth = require('./routes/auth');
 const users = require('./routes/users');
 const currencies = require('./routes/currencies');
+const shares = require('./routes/shares')
 const defaultUser = require('./config/defaultUser')
 const passport = require('./config/passport')
 const { notFound, catchErrors } = require('./middlewares/errors')
@@ -55,6 +56,7 @@ defaultUser.initializeData().catch(err => console.log('Error: Cannot initialize 
 app.use('/api/auth', auth.apiAuth());
 app.use('/api/users', users.apiUsers());
 app.use('/api/currencies', currencies.apiCurrencies());
+app.use('/api/shares', shares.apiShares());
 
 //configure CORS (cross-origin resource sharing) which enables fetching data from other domeins like NBP
 app.use(cors());
