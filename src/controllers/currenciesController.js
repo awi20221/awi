@@ -163,7 +163,7 @@ async function findAllByDay(req, res, next) {
             if (error)
                 console.log("Cannot fetch currencies ", error)
         })
-    return res.status(200).send({ curren: currencies });
+    return res.status(200).send({ currencies: currencies });
 }
 
 async function findOneByDay(req, res, next) {
