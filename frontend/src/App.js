@@ -1,11 +1,13 @@
 import React from "react";
 import './App.css'
-import Currencies from "./components/Currencies/Currencies";
+import List from "./components/Currencies/Currencies";
+
 
 function App() {
   return (
   <div className="App">
-    <Currencies/>
+    <h1>Kursy walut</h1>
+    <List />
   </div>);
 }
 

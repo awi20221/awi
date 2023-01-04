@@ -1,0 +1,10 @@
+.currency{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    max-height: 25px;
+    max-width: 80vw;
+    border:3px solid black;
+    border-radius: 4px;
+    margin: 0 auto 5px;
+}

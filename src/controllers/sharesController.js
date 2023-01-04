@@ -71,7 +71,7 @@ async function saveToDB(filePath){
 
 
 //TODO: obsluzyc jakos sciezke do pliku
-saveToDB("C:/Users/kacpe/Downloads/_2023-01-02_akcje.xls")
+//saveToDB("C:/Users/kacpe/Downloads/_2023-01-02_akcje.xls")
 
 
 //functions exposed by our server and DB

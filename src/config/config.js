@@ -9,7 +9,7 @@ const dburl = require('./database')
 const configValues = {
     //env: process.env.NODE_ENV,
     server: {
-        port: Number(process.env.PORT || 3000),
+        port: Number(process.env.PORT || 3001),
         database: process.env.DATABASE || dburl.mongoUrl,
         TOKEN_SECRET_JWT: 'jWt9982_s!tokenSecreTqQrtw'
     }
