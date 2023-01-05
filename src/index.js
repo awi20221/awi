@@ -16,6 +16,7 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const cors = require('cors');
 
+
 //Configuration of server instance
 const app = express();
 

@@ -1,13 +1,15 @@
 const express = require('express');
 const currenciesController = require('../controllers/currenciesController');
 const {catchAsync} = require('../middlewares/errors')
+const jwtAuth = require('../middlewares/auth');
+
 
 //udostępnianie pobranych danych zapisanych w DB poprzez api
 function apiCurrencies() {
     const api = express.Router();
 
     // GET api/currencies/
-    api.get('/' ,catchAsync(currenciesController.findAll))
+    api.get('/', jwtAuth.auth ,catchAsync(currenciesController.findAll))
 
     // GET api/currencies/:code
     api.get('/code/:code',catchAsync(currenciesController.findOne))
