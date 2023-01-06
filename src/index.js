@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname,'views')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); //umożliwia odczyt danych z ciała żądania w aplikajach express
 
-//Configure passport
+//Configure passport which has two strategies 'local' to login, and 'jwt' after login to authorize
 passport.configJWT();
 
 // Connect to database

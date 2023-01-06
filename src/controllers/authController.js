@@ -2,6 +2,35 @@ const User = require('../models/user').userModel;
 const jwt = require('jsonwebtoken');
 
 
+/**
+ *  Funckja umożliwiającą autentyfikację użytkownika podczas wywoływania metod post/put/delete w celu modyfikacji swojego konta,
+ *  Konieczne sprawdzenie czy jest zalogowany jako użytkownik, którego chce modyfikować,
+ *  Parametr konieczny do weryfikacji to :slug przekazywany jako parametr w req.params, jest to identyfikator danych któe chcemy zmienić
+ *  Drugi parametr to req.user zwracany przez callback funkcji passport.authenticate
+ *  Uwaga: ADMIN ma dostęp do wszystkich danych
+ */
+
+//TODO: czy slug w tej funkcji jest potrzebny ?
+async function verifyRequestAvailability(req, res, next){
+    if( String(req.user.role) === "ADMIN"){
+        return true;
+    }else {
+        const userToModify = await User.find({'slug': req.params.slug});
+        if (String(req.user._id) === String(userToModify[0]._id)) {
+            return true;
+        }
+        return false;
+    }
+}
+
+async function verifyIfAdmin(req, res, next){
+    if( String(req.user.role) === "ADMIN"){
+        return true;
+    }else
+        return false;
+}
+
+
 
 async function isEmailAvailable(email){
     const res = await User.find({email: email}).exec();
@@ -44,6 +73,6 @@ async function isLoginAvailable(login){
         res.send('Email unavailable')
     }
 
-module.exports = {login,register};
+module.exports = {login,register, verifyRequestAvailability, verifyIfAdmin};
 
 
