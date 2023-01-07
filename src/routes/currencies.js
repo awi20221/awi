@@ -1,13 +1,15 @@
 const express = require('express');
 const currenciesController = require('../controllers/currenciesController');
 const {catchAsync} = require('../middlewares/errors')
+const jwtAuth = require('../middlewares/auth');
+
 
 //udostępnianie pobranych danych zapisanych w DB poprzez api
 function apiCurrencies() {
     const api = express.Router();
 
-    // GET api/currencies/
-    api.get('/' ,catchAsync(currenciesController.findAll))
+    // GET api/currencies/  (only admin)
+    api.get('/', jwtAuth.auth ,catchAsync(currenciesController.findAll))
 
     // GET api/currencies/:code
     api.get('/code/:code',catchAsync(currenciesController.findOne))
@@ -21,13 +23,11 @@ function apiCurrencies() {
     // GET api/currencies/update-time
     api.get('/update-time', catchAsync(currenciesController.getUpdateDate))
 
-    //TODO: admin only: run fetchOldDate, getUpdate functions --> Heroku offers scheduler as node-cron but not for free that is why we implement it as http request
+    // GET api/currencies/update-currencies     (only admin)
+    api.get('/update-currencies',jwtAuth.auth, catchAsync(currenciesController.update))
 
-    // GET api/currencies/update-currencies
-    api.get('/update-currencies', catchAsync(currenciesController.update))
-
-    // GET api/currencies/fetch-old-data
-    api.get('/fetch-old-data', catchAsync(currenciesController.fetchOldData))
+    // GET api/currencies/fetch-old-data        (only admin)
+    api.get('/fetch-old-data',jwtAuth.auth, catchAsync(currenciesController.fetchOldData))
 
     return api;
 }

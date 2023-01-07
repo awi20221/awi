@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Register page</title>
-    <script src="../../../src/app.js" defer type="module"></script>
+    <script src="../../actions/register.js" type="module"></script>
     <link rel="stylesheet" href="../css/login_form.css" />
   </head>
   <body>
@@ -21,37 +21,37 @@
       </div>
 
       <div class="form-row">
-        <label for="first-name" class="form-label">Imie</label>
+        <label for="user-fullname" class="form-label">Imie</label>
         <input
           type="text"
           class="form-control"
-          id="first-name"
-          name="first-name"
+          id="user-fullname"
+          name="user-fullname"
         />
       </div>
 
       <div class="form-row">
-        <label for="last-name" class="form-label">Nazwisko</label>
+        <label for="login" class="form-label">Login</label>
         <input
           type="text"
           class="form-control"
-          id="last-name"
-          name="last-name"
+          id="login"
+          name="login"
         />
       </div>
 
       <div class="form-row">
-        <label for="login" class="form-label">Podaj email</label>
-        <input type="text" class="form-control" id="login" name="login" />
+        <label for="email" class="form-label">Podaj email</label>
+        <input type="text" class="form-control" id="email" name="email" />
       </div>
 
       <div class="form-row">
-        <label class="form-label" for="haslo">Wprowadź hasło</label>
+        <label class="form-label" for="password">Wprowadź hasło</label>
         <input
           type="password"
           class="form-control form-control-textarea"
-          name="haslo"
-          id="haslo"
+          name="password"
+          id="password"
         />
       </div>
 
