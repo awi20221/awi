@@ -58,11 +58,11 @@ async function isLoginAvailable(login){
 
     //TODO: dodać potwierdzenie adresu email
     async function register(req, res, next) {
-        const { login, email, password, role } = req.body;
+        const { fullName, login, email, password, role } = req.body;
         //check e-mail and login availability
         if(await isEmailAvailable(email)){
             if(await isLoginAvailable(login)){
-                const user = new User({ login: login, email: email, role: role });
+                const user = new User({ fullName: fullName, login: login, email: email, role: role });
                 await User.register(user, password);
                 res.send('User created successfully');
                 return;

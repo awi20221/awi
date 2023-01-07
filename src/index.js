@@ -52,6 +52,9 @@ mongoose.connection.on('error', (err) => {
 //initialize admin account if there is none user in the database
 defaultUser.initializeData().catch(err => console.log('Error: Cannot initialize admin account', err));
 
+//configure CORS (cross-origin resource sharing) which enables fetching data from other domeins like NBP, (need to be enabled before routes)
+app.use(cors());
+
 
 // routes config
 app.use('/api/auth', auth.apiAuth());
@@ -59,8 +62,7 @@ app.use('/api/users', users.apiUsers());
 app.use('/api/currencies', currencies.apiCurrencies());
 app.use('/api/shares', shares.apiShares());
 
-//configure CORS (cross-origin resource sharing) which enables fetching data from other domeins like NBP
-app.use(cors());
+
 
 // errors handling, czyli wywołania funckcji next z kontrolerów
 app.use(notFound);

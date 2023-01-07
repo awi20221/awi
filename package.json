@@ -6,7 +6,7 @@
   "scripts": {
     "start_locale": "npm-run-all --parallel start_parcel start_server",
     "start_server": "node ./src/index.js",
-    "start_parcel": "parcel ./src/views/index.html",
+    "start_parcel": "parcel frontend/views/index.html",
     "rebundle_parcel": " "
   },
   "keywords": [],

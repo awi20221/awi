@@ -10,6 +10,7 @@ const initializeData = async () => {
     if(!await isAdminExist())
     {
         const user = new User({
+                fullName: "administrator",
                 role: "ADMIN",
                 login: "admin",
                 email: "awi2022.1.0@gmail.com",

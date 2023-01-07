@@ -4,6 +4,11 @@ const URLSlugs = require('mongoose-url-slugs')
 
 
 const userSchema = mongoose.Schema({
+    fullName: {
+      type: String,
+      trim: true,
+      required: true
+    },
     login: {
         type: String,
         unique: true,
