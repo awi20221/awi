@@ -7,7 +7,7 @@
     "start_locale": "npm-run-all --parallel start_parcel start_server",
     "start_server": "node ./src/index.js",
     "start_parcel": "parcel frontend/views/index.html",
-    "rebundle_parcel": " "
+    "test": "jest "
   },
   "keywords": [],
   "author": "",
@@ -29,7 +29,9 @@
     "pug": "^3.0.2",
     "sass": "^1.54.5",
     "slugify": "^1.6.5",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "jest": "^29.3.1",
+    "supertest": "^6.3.3"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
