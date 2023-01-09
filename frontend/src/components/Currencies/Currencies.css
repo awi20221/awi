@@ -1,10 +1,58 @@
-.currency{
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-    max-height: 25px;
-    max-width: 80vw;
-    border:3px solid black;
-    border-radius: 4px;
-    margin: 0 auto 5px;
+.tabele {
+  max-width: 980px;
+  background: none;
+  padding: 15px 15px;
+  color: rgb(22, 48, 43);
+  font-family: "Poppins", sans-serif;
+  margin: 0 auto;
+}
+
+.tabele table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.tabele caption {
+  font-size: 24px;
+  padding-bottom: 10px;
+  color: rgb(22, 48, 43);
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+.tabele thead {
+  height: 60px;
+  background: rgb(22, 48, 43);
+  color: rgba(240, 255, 255, 0.929);
+  position: sticky;
+  top: 0px;
+}
+
+.tabele th {
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.tabele tr {
+  text-align: center;
+  padding: 8px 4px;
+  border-bottom: solid 2px rgb(255, 255, 255);
+}
+
+.tabele tbody tr {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 2px 3px 0 rgba(0, 0, 0, 0.712);
+  border: none;
+  transition: all 0.3s;
+}
+
+.tabele tbody tr:hover {
+  background: rgba(17, 37, 32, 0.715);
+  color: #fff;
+}
+
+.tabele td {
+  padding: 10px 24px;
+  text-align: center;
 }

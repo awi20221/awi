@@ -8,24 +8,9 @@ class List extends React.Component {
   constructor(props) {
     super(props);
 
-    this.currency_model = [
-      {
-        slug: "chf",
-        id: "1234",
-        c_name: "frank szwajcarski",
-        code: "",
-        mid: 4.9806,
-        date: "11-09-2009",
-      },
-      {
-        slug: "usd",
-        id: "3456",
-        c_name: "dolar amerykanski",
-        code: "",
-        mid: 4.9806,
-        date: "11-09-2009",
-      },
-    ];
+    this.state = {
+      currencies: "",
+    };
   }
 
   componentDidMount() {
@@ -33,28 +18,71 @@ class List extends React.Component {
   }
 
   async fetchCurrencies() {
-    const resp = await axios({
+    let url = "http://localhost:3001/api/currencies";
+    axios
+      .get(url)
+      .then((response) => {
+        console.log(response.data.currencies);
+        this.setState({
+          currencies: response.data.currencies,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  /*
+  //sposob 1
+    const { data } = await axios({
       method: "get",
       url: "http://localhost:3001/api/currencies",
     });
-    console.log(resp);
-    //axios.get("http://localhost:3001/api/currencies");
-  }
+    //const resp = axios.get("http://localhost:3001/api/currencies");
+    console.log(data);
+    //const cur = resp.data;
+    this.setState({ data: data.currencies});
+
+    //sposob 2
+    try { 
+      const { data } = await axios({
+        method: "get",
+        url: "http://localhost:3001/api/currencies",
+      });
+      console.log(data);
+      //this.setState({ data });
+    } catch {
+      console.error("Wystąpił błąd podczas pobierania danych");
+    }
+  } */
 
   render() {
     return (
       <div>
-        <p>Kursy walut</p>
+        <div class="tabele">
+          <table>
+            <caption>Kursy walut</caption>
+            <thead>
+              <tr>
+                <th>Waluta</th>
+                <th>Skrót</th>
+                <th>?</th>
+                <th>Data</th>
+              </tr>
+            </thead>
 
-        {this.currency_model.map((currency) => (
-          <Currency //model w osobnym pliku
-            c_name={currency.c_name}
-            slug={currency.slug}
-            mid={currency.mid}
-            id={currency.id}
-            date={currency.date}
-          />
-        ))}
+            {Array.from(this.state.currencies).map((currency) => (
+              <Currency //model w osobnym pliku
+                key={currency._id}
+                c_name={currency.currency}
+                slug={currency.slug}
+                mid={currency.mid}
+                id={currency._id}
+                date={currency.effectiveDate}
+              />
+            ))}
+          </table>
+        </div>
       </div>
     );
   }

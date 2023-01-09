@@ -9,7 +9,7 @@ function apiCurrencies() {
     const api = express.Router();
 
     // GET api/currencies/  (only admin)
-    api.get('/', jwtAuth.auth ,catchAsync(currenciesController.findAll))
+    api.get('/',catchAsync(currenciesController.findAll)) //<- , jwtAuth.auth //ZMIANA TYMCZASOWA!
 
     // GET api/currencies/:code
     api.get('/code/:code',catchAsync(currenciesController.findOne))

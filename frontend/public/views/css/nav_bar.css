@@ -82,7 +82,7 @@ nav {
     width: 45%;
     height: 92vh;
     top: 8vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.03), rgb(0, 0, 0));
+    background: linear-gradient(rgba(232, 6, 6, 0.03), rgb(0, 0, 0));
     flex-direction: column;
     align-items: center;
     justify-content: center;

@@ -13,17 +13,19 @@
 
 nav {
   background: linear-gradient(to bottom right, #000000, var(--main_green));
-  position: sticky;
-  top: 0;
 }
 
 body {
   width: 100vw;
   height: 100vh;
-  background: #ffffff;
+  background: #f9f8f6;
   margin: 0;
   text-align: center;
   font-family: "Poppins", sans-serif;
+}
+
+.footer{
+  background: rgb(20, 43, 38);
 }
 
 @media screen and (max-width: 868px) {
