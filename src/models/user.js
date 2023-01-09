@@ -4,6 +4,11 @@ const URLSlugs = require('mongoose-url-slugs')
 
 
 const userSchema = mongoose.Schema({
+    fullName: {
+      type: String,
+      trim: true,
+      required: true
+    },
     login: {
         type: String,
         unique: true,
@@ -27,7 +32,14 @@ const userSchema = mongoose.Schema({
         timestamps: true // created_at / updated_at
 });
 
+/**
+ * Plugin passport-local-mongoose umożliwia obsługę danych autoryzacyjnych, usernameField oznacza, czym będziemy logować
+ * się do aplikcaji, natomiast hasło zostanie samo zaszyfrowane i zapisane w bazie w miejscu rejestracji użytkownika metodą
+ * register() z biblioteki passport-local-mongoose w pliku authController, ponieżej znajduje się utworzona strategia lokalna
+ */
+
 userSchema.plugin(passportLocalMongoose, { usernameField: 'login' });
+
 userSchema.plugin(URLSlugs('login',{field: 'slug', update: true}))
 
 

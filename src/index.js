@@ -15,18 +15,19 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 
+
 //Configuration of server instance
 const app = express();
 
-app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, '../frontend/views'));
 
 //konfiguracja dostepu do plikow statyczny, umozliwia ich importowanie
-app.use(express.static(path.join(__dirname, "views")));
+app.use(express.static(path.join(__dirname,'../frontend/views')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); //umożliwia odczyt danych z ciała żądania w aplikajach express
 
-//Configure passport
+//Configure passport which has two strategies 'local' to login, and 'jwt' after login to authorize
 passport.configJWT();
 
 // Connect to database
@@ -49,9 +50,11 @@ mongoose.connection.on("error", (err) => {
 });
 
 //initialize admin account if there is none user in the database
-defaultUser
-  .initializeData()
-  .catch((err) => console.log("Error: Cannot initialize admin account", err));
+defaultUser.initializeData().catch(err => console.log('Error: Cannot initialize admin account', err));
+
+//configure CORS (cross-origin resource sharing) which enables fetching data from other domeins like NBP, (need to be enabled before routes)
+app.use(cors());
+
 
 // routes config
 app.use("/api/auth", auth.apiAuth());
@@ -59,8 +62,7 @@ app.use("/api/users", users.apiUsers());
 app.use("/api/currencies", currencies.apiCurrencies());
 app.use("/api/shares", shares.apiShares());
 
-//configure CORS (cross-origin resource sharing) which enables fetching data from other domeins like NBP
-app.use(cors());
+
 
 // errors handling, czyli wywołania funckcji next z kontrolerów
 app.use(notFound);

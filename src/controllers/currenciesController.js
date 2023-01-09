@@ -1,8 +1,7 @@
 const currencyModel = require('../models/currencies').currencyModel
 const currencyUpdateTimeModel = require('../models/currenciesUpdateTime').currencyUpdateTimeModel
 const axios = require('axios')
-
-//TODO: wersja w której każda z tabeli dziennych jest przechowywana w oddzielnej kolekjcji
+const authController = require("./authController");
 
 
 //functions used in DB modelling
@@ -148,13 +147,20 @@ async function findOne(req, res, next) {
     return res.status(200).send({ currency: currency });
 }
 
-async function findAll(req, res) {
-    const currencies = await currencyModel.find()
-        .catch(error => {
-            if (error)
-                console.log("Cannot fetch currencies ", error)
-        })
-    return res.status(200).send({ currencies: currencies });
+/**
+ * Funkcja dostępna jedynie dla admin'a (duża ilość przesyłanych danych może wyrzucić błąd
+ */
+async function findAll(req, res, next) {
+    if(await authController.verifyIfAdmin(req,res,next)) {
+        const currencies = await currencyModel.find()
+            .catch(error => {
+                if (error)
+                    console.log("Cannot fetch currencies ", error)
+            })
+        return res.status(200).send({currencies: currencies});
+    }
+    return res.status(200).send("Available for admin only");
+
 }
 
 async function findAllByDay(req, res, next) {
@@ -163,7 +169,7 @@ async function findAllByDay(req, res, next) {
             if (error)
                 console.log("Cannot fetch currencies ", error)
         })
-    return res.status(200).send({ curren: currencies });
+    return res.status(200).send({ currencies: currencies });
 }
 
 async function findOneByDay(req, res, next) {
@@ -191,29 +197,35 @@ async function getUpdateDate(req,res, next){
 }
 
 async function update(req, res, next) {
-    checkIfUpdateFromRemoteAvailable()
-        .catch(error => {
-            if(error){
-                console.log('Update currencies error ', error);
-                return res.status(400).send('Cannot update database', error);
-            }
-        })
-        .then(()=> {
-            return res.status(200).send('Database updated');
-        })
+    if(await authController.verifyIfAdmin(req,res,next)) {
+        checkIfUpdateFromRemoteAvailable()
+            .catch(error => {
+                if (error) {
+                    console.log('Update currencies error ', error);
+                    return res.status(400).send('Cannot update database', error);
+                }
+            })
+            .then(() => {
+                return res.status(200).send('Database updated');
+            })
+    }
+    return res.status(200).send("Available for admin only");
 }
 
 async function fetchOldData(req, res, next) {
-    fetchPastCurrenciesTables()
-        .catch(error => {
-            if(error){
-                console.log('Update currencies error ', error);
-                return res.status(400).send('Cannot update database (fetch old data)', error);
-            }
-        })
-        .then(()=> {
-            return res.status(200).send('Past currencies tables fetched successfully');
-        })
+    if(await authController.verifyIfAdmin(req,res,next)) {
+        fetchPastCurrenciesTables()
+            .catch(error => {
+                if (error) {
+                    console.log('Update currencies error ', error);
+                    return res.status(400).send('Cannot update database (fetch old data)', error);
+                }
+            })
+            .then(() => {
+                return res.status(200).send('Past currencies tables fetched successfully');
+            })
+    }
+    return res.status(200).send("Available for admin only");
 }
 
 

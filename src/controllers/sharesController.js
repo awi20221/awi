@@ -1,10 +1,8 @@
 const sharesModel = require('../models/shares').shareModel
 const sharesUpdateTimeModel = require('../models/sharesUpdateTime').shareUpdateTimeModel
 const XLSX = require('xlsx')
+const authController = require("./authController");
 
-
-
-//TODO: automatyczne pobieranie, nwm czy da rady bo nie udostępnia API i blokuje zapytania pozadomenowe
 
 
 // async function downloadXls() {
@@ -86,13 +84,16 @@ async function findOneCompany(req, res, next) {
     return res.status(200).send({ share: share });
 }
 
-async function findAll(req, res) {
-    const shares = await sharesModel.find()
-        .catch(error => {
-            if (error)
-                console.log("Cannot fetch currencies ", error)
-        })
-    return res.status(200).send({ shares: shares });
+async function findAll(req, res, next) {
+    if(await authController.verifyIfAdmin(req,res,next)) {
+        const shares = await sharesModel.find()
+            .catch(error => {
+                if (error)
+                    console.log("Cannot fetch currencies ", error)
+            })
+        return res.status(200).send({shares: shares});
+    }
+    return res.status(200).send("Available for admin only");
 }
 
 async function findAllByDay(req, res, next) {
@@ -129,7 +130,9 @@ async function getUpdateDate(req,res, next){
 }
 
 async function update(req, res, next) {
-    //add a file path as a parameter in order to look up for it in req.body.path
+    if(await authController.verifyIfAdmin(req,res,next)) {
+
+        //add a file path as a parameter in order to look up for it in req.body.path
 //     await saveToDB(req.params.filePath )
 //         .catch(error => {
 //             if(error){
@@ -140,7 +143,9 @@ async function update(req, res, next) {
 //         .then(()=> {
 //             return res.status(200).send('Database updated');
 //         })
-    return res.status(200).send('As far, I don\'t do anything')
+        return res.status(200).send('As far, I don\'t do anything')
+    }
+    return res.status(200).send("Available for admin only");
 }
 
 module.exports = {findAll,findAllByDay,findOneByDay,findOneCompany,getUpdateDate,update}

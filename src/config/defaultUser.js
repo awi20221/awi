@@ -1,18 +1,19 @@
 const User = require('../models/user').userModel
 
-async function isUsersExist() {
-    const result = await User.find().exec();
+async function isAdminExist() {
+    const result = await User.find({role: 'ADMIN'}).exec();
     return result.length > 0
 }
 
 // Initialize first user
 const initializeData = async () => {
-    if(!await isUsersExist())
+    if(!await isAdminExist())
     {
         const user = new User({
+                fullName: "administrator",
                 role: "ADMIN",
                 login: "admin",
-                email: "admin@admin.com",
+                email: "awi2022.1.0@gmail.com",
             });
         const password = "admin";
         await User.register(user, password).catch(error => {

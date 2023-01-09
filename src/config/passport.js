@@ -1,9 +1,9 @@
 const passport = require('passport');
-const passportJWT = require('passport-jwt');
+const passportJWT = require('passport-jwt');    //strategia autoryzacji przy użyciu jwt z biblioteki passport
 const User = require('../models/user').userModel;
 
 const JWTStrategy = passportJWT.Strategy;
-const ExtractJWT = passportJWT.ExtractJwt;
+const ExtractJWT = passportJWT.ExtractJwt;  //funkcja ekstraktująca token z requestu
 
 
 function verifyCallback(payload, done) {
@@ -22,7 +22,7 @@ function configJWT() {
         secretOrKey: process.env.JWT_SECRET
     };
 
-    passport.use(User.createStrategy());
+    passport.use(User.createStrategy());                        //strategia stowrzona za pomoca biblioteki passport-local-mongoose z modelu User
     passport.use(new JWTStrategy(config, verifyCallback));
 }
 
