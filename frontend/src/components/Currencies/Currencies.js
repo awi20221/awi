@@ -2,6 +2,7 @@ import React from "react";
 import "./Currencies.css";
 import Currency from "./single_currency";
 import axios from "axios";
+//const axios = require("axios").default;
 
 class List extends React.Component {
   constructor(props) {
@@ -32,9 +33,12 @@ class List extends React.Component {
   }
 
   async fetchCurrencies() {
-    //const resp = await axios.get('http://localhost:3001/api/currencies');
-    //console.log(resp);
-    axios.get("http://localhost:3001/api/currencies");
+    const resp = await axios({
+      method: "get",
+      url: "http://localhost:3001/api/currencies",
+    });
+    console.log(resp);
+    //axios.get("http://localhost:3001/api/currencies");
   }
 
   render() {
