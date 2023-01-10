@@ -7,7 +7,7 @@ function apiShares() {
     const api = express.Router();
 
     // GET api/shares/  (admin only risky operation)
-    api.get('/',jwtAuth.auth,catchAsync(sharesController.findAll))
+    api.get('/',catchAsync(sharesController.findAll)) //,jwtAuth.auth //TYMCZASOWA ZMIANA!
 
     // GET api/shares/:name
     api.get('/name/:name', catchAsync(sharesController.findOneCompany))

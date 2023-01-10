@@ -1,17 +1,17 @@
 import React from "react";
-import "./currencies.css";
-import Currency from "./single_currency";
+import "./shares.css";
+import Share from "./single_share";
 import axios from "axios";
 import Footer from "../../Footer";
 import Nav from "../../Navigation";
 //const axios = require("axios").default;
 
-class CurrenciesList extends React.Component {
+class SharesList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currencies: "",
+      shares: "",
     };
   }
 
@@ -20,13 +20,13 @@ class CurrenciesList extends React.Component {
   }
 
   async fetchCurrencies() {
-    let url = "http://localhost:3001/api/currencies";
+    let url = "http://localhost:3001/api/shares ";
     axios
       .get(url)
       .then((response) => {
-        console.log(response.data.currencies);
+        console.log(response.data.shares);
         this.setState({
-          currencies: response.data.currencies,
+          shares: response.data.shares,
         });
       })
       .catch((error) => {
@@ -60,28 +60,30 @@ class CurrenciesList extends React.Component {
 
   render() {
     return (
-      <div className="container-currencies">
+      <div className="container-shares">
         <Nav/>
         <div class="tabele">
           <table>
-            <caption>Kursy walut</caption>
+            <caption>Akcje</caption>
             <thead>
               <tr>
-                <th>Waluta</th>
-                <th>Skrót</th>
-                <th>?</th>
+                <th>Nazwa</th>
+                <th>Minimal Rate</th>
+                <th>Maximal Rate</th>
+                <th>Change</th>
                 <th>Data</th>
               </tr>
             </thead>
 
-            {Array.from(this.state.currencies).map((currency) => (
-              <Currency //model w osobnym pliku
-                key={currency._id}
-                c_name={currency.currency}
-                slug={currency.slug}
-                mid={currency.mid}
-                id={currency._id}
-                date={currency.effectiveDate}
+            {Array.from(this.state.shares).map((share) => (
+              <Share //model w osobnym pliku
+                key={share._id}
+                name={share.name}
+                minimalRate={share.minimalRate}
+                maximalRate={share.maximalRate}
+                change={share.change}
+                id={share._id}
+                date={share.effectiveDate}
               />
             ))}
           </table>
@@ -92,4 +94,4 @@ class CurrenciesList extends React.Component {
   }
 }
 
-export default CurrenciesList;
+export default SharesList;

@@ -1,5 +1,6 @@
 .footer {
-  background: linear-gradient(to bottom right, #000000, var(--main_green));
+  background: rgb(20, 43, 38);
+  /*background: linear-gradient(to bottom right, #000000, var(--main_green));*/
   box-sizing: border-box;
   width: 100vw;
   max-height: 16vh;
@@ -11,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px -2px 10px 0 rgba(0, 0, 0, 0.338);
 }
 
 .footer-login {
@@ -76,6 +78,7 @@ p.footer-links a {
   color: #fff;
   display: inline-block;
   padding-right: 5px;
+  padding-left: 5px;
 }
 
 .footer-links .link-1:before {

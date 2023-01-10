@@ -1,13 +1,20 @@
-@import "nav_bar.css";
+@import "../css/nav_bar.css";
+
 *{
   margin: 0;
   padding: 0px;
   box-sizing: border-box;
 }
 
-body {
+.home-nav {
+  background: black;
+}
+
+.container-home {  
+  width: 100vw;
+  height: 100vh;
   background-image: linear-gradient(rgb(0, 0, 0), rgba(15, 236, 195, 0.14)),
-    url("images/background2.jpg");
+    url("../css/images/background2.jpg");
   background-color: #cccccc;
   background-size: cover;
   background-position: center center;

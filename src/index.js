@@ -20,10 +20,10 @@ const cors = require("cors");
 const app = express();
 
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, '../frontend/views'));
+app.set('views', path.join(__dirname, '../frontend/public'));
 
 //konfiguracja dostepu do plikow statyczny, umozliwia ich importowanie
-app.use(express.static(path.join(__dirname,'../frontend/views')));
+app.use(express.static(path.join(__dirname,'../frontend/public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); //umożliwia odczyt danych z ciała żądania w aplikajach express
 

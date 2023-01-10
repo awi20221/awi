@@ -1,3 +1,37 @@
+* {
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --main_green: rgba(22, 48, 43, 0.914);
+}
+
+nav {
+  background: linear-gradient(to bottom right, #000000, var(--main_green));
+}
+
+.container-currencies {
+  width: 100vw;
+  height: 100vh;
+  background: #f9f8f6;
+  margin: 0;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+
+@media screen and (max-width: 868px) {
+  .nav-links {
+    background: linear-gradient(to top right, #000000, var(--main_green));
+    height: 68vh;
+    border-top: 2px solid rgb(26, 47, 36);
+    border-bottom: 2px solid rgb(26, 47, 36);
+  }
+}
+
+
 .tabele {
   max-width: 980px;
   background: none;
