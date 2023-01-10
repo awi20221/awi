@@ -1,5 +1,5 @@
 import React from "react";
-import "./currencies.css";
+import "./Currencies.css";
 import Currency from "./single_currency";
 import axios from "axios";
 import Footer from "../../Footer";
