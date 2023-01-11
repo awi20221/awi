@@ -9,10 +9,10 @@ function apiShares() {
     // GET api/shares/  (admin only risky operation)
     api.get('/',catchAsync(sharesController.findAll)) //,jwtAuth.auth //TYMCZASOWA ZMIANA!
 
-    // GET api/shares/:name
+    // GET api/shares/name/:name
     api.get('/name/:name', catchAsync(sharesController.findOneCompany))
 
-    // GET api/shares/:effectiveDate{YYYY-MM-DD}
+    // GET api/shares/effectiveDate/:effectiveDate{YYYY-MM-DD}
     api.get('/effectiveDate/:effectiveDate', catchAsync(sharesController.findAllByDay))
 
     // GET api/shares/:effectiveDate{YYYY-MM-DD}/:name
@@ -22,10 +22,12 @@ function apiShares() {
     // GET api/shares/update-time
     api.get('/update-time', catchAsync(sharesController.getUpdateDate))
 
-    // GET api/shares/update-shares/:path-to-local-file {path to file downloaded from https://www.gpw.pl/archiwum-notowan on your local computer}
-    //if :path-to-local-file === null, request will search download directory on your computer to find any .csv/ .xls files which have specific name
+    // GET api/shares/update-shares?path-to-local-file={PATH} {path to file downloaded from https://www.gpw.pl/archiwum-notowan on your local computer}
+    // PATH - needed to be specified as absolute path
+    // As variable in reqest named as : filePath
 
-    api.get('/update-shares', jwtAuth.auth ,catchAsync(sharesController.update))
+    // jwtAuth.auth
+    api.get('/update-shares' ,catchAsync(sharesController.update))
 
     return api;
 }

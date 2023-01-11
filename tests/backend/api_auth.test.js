@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const userModel = require("../src/models/user").userModel
-const MONGO_URI = require('../src/config/database').mongoUrl
+const userModel = require("../../backend/models/user").userModel
+const MONGO_URI = require('../../backend/config/database').mongoUrl
 const request = require('supertest');
 
 

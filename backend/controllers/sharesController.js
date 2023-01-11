@@ -1,28 +1,8 @@
 const sharesModel = require("../models/shares").shareModel;
-const sharesUpdateTimeModel =
-  require("../models/sharesUpdateTime").shareUpdateTimeModel;
+const sharesUpdateTimeModel = require("../models/sharesUpdateTime").shareUpdateTimeModel;
 const XLSX = require("xlsx");
 const authController = require("./authController");
 
-// async function downloadXls() {
-//     try {
-//         // https://www.gpw.pl/archiwum-notowan?fetch=1&type=10&instrument=&date=30-12-2022
-//         const response = await axios({
-//             method: 'GET',
-//             url: 'https://www.gpw.pl/archiwum-notowan',
-//             params: {
-//                 fetch: '1',
-//                 type: '10',
-//                 instrument: '',
-//                 date: '30-12-2022',
-//             },
-//             responseType: 'stream',
-//         });
-//         response.data.pipe(fs.createWriteStream('notowania.xls'));
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
 
 async function getLocalXLSandParseToJSON(filePath) {
   const workbook = XLSX.readFile(filePath);
@@ -42,7 +22,6 @@ async function checkIfDataAlreadyInDB(effectiveDate) {
 }
 
 async function dispatchSharesTable(jsonTables) {
-  console.log(jsonTables);
   await jsonTables.forEach((item) => {
     const shareItem = new sharesModel({
       name: item.Nazwa,
@@ -73,8 +52,6 @@ async function saveToDB(filePath) {
   }
 }
 
-//TODO: obsluzyc jakos sciezke do pliku
-//saveToDB("C:/Users/kacpe/Downloads/_2023-01-02_akcje.xls")
 
 //functions exposed by our server and DB
 
@@ -143,27 +120,19 @@ async function getUpdateDate(req, res, next) {
 
 async function update(req, res, next) {
   if (await authController.verifyIfAdmin(req, res, next)) {
-    //add a file path as a parameter in order to look up for it in req.body.path
-    //     await saveToDB(req.params.filePath )
-    //         .catch(error => {
-    //             if(error){
-    //                 console.log('Update currencies error ', error);
-    //                 return res.status(400).send('Cannot update database', error);
-    //             }
-    //         })
-    //         .then(()=> {
-    //             return res.status(200).send('Database updated');
-    //         })
-    return res.status(200).send("As far, I don't do anything");
+    // add a file path as a body in order to look up for it in req.body.filePath
+        await saveToDB(req.body.filePath)
+            .catch(error => {
+                if(error){
+                  console.log('Cannot update database (shares)' , error);
+                  return res.status(400).send('Cannot update database (shares)');
+                }
+            })
+            .then(()=> {
+                return res.status(200).send('Database updated');
+            })
   }
   return res.status(200).send("Available for admin only");
 }
 
-module.exports = {
-  findAll,
-  findAllByDay,
-  findOneByDay,
-  findOneCompany,
-  getUpdateDate,
-  update,
-};
+module.exports = {findAll, findAllByDay, findOneByDay, findOneCompany, getUpdateDate, update};

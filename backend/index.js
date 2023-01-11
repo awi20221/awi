@@ -3,7 +3,7 @@ dotenv.config({ path: ".env" });
 // console.log(process.env.JWT_SECRET);
 
 const express = require("express");
-const config = require("../src/config/config");
+const config = require("../backend/config/config");
 const auth = require("./routes/auth");
 const users = require("./routes/users");
 const currencies = require("./routes/currencies");
