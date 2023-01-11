@@ -25,6 +25,7 @@ function Login(props) {
             id="login"
             name="login"
             required="required"
+            autoComplete="off"
           />
         </div>
         <div className="form-row">

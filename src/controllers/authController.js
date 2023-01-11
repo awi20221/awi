@@ -73,7 +73,7 @@ async function isLoginAvailable(login){
         res.send('Email unavailable')
     }
 
-//module.exports = {login,register, verifyRequestAvailability, verifyIfAdmin};
-module.exports = {login,register}; //ZMIANA TYMCZASOWA!
+module.exports = {login,register, verifyRequestAvailability, verifyIfAdmin};
+//module.exports = {login,register}; //ZMIANA TYMCZASOWA!
 
 

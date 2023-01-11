@@ -1,5 +1,5 @@
 import React from "react";
-import "./currencies.css";
+import "./Currencies.css";
 import Currency from "./single_currency";
 import axios from "axios";
 import Footer from "../../Footer";
@@ -33,31 +33,7 @@ class CurrenciesList extends React.Component {
         console.log(error);
       });
   }
-
-  /*
-  //sposob 1
-    const { data } = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/currencies",
-    });
-    //const resp = axios.get("http://localhost:3001/api/currencies");
-    console.log(data);
-    //const cur = resp.data;
-    this.setState({ data: data.currencies});
-
-    //sposob 2
-    try { 
-      const { data } = await axios({
-        method: "get",
-        url: "http://localhost:3001/api/currencies",
-      });
-      console.log(data);
-      //this.setState({ data });
-    } catch {
-      console.error("Wystąpił błąd podczas pobierania danych");
-    }
-  } */
-
+  
   render() {
     return (
       <div className="container-currencies">

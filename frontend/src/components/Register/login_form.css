@@ -44,7 +44,7 @@ form {
 }
 
 .form-row {
-  margin-bottom: 22px;
+  margin-bottom:15px;
   position: relative;
 }
 
@@ -54,8 +54,7 @@ button {
   box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.712);
   border: none;
   border-radius: 15px;
-  padding: 14px 14px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   color: rgba(248, 248, 248, 0.781);
   transition: box-shadow 0.3s, outline 0.3s;
@@ -64,6 +63,7 @@ button {
 
 input {
   width: 100%;
+  padding: 10px 14px;
 }
 
 label {
@@ -93,6 +93,7 @@ button {
   overflow: hidden;
   background: rgb(22, 48, 43);
   font-size: 17px;
+  padding: 14px 14px;
 }
 
 button::after {
@@ -115,7 +116,7 @@ button:hover:after {
 .spacer-form {
   background: #ffffffd5;
   height: 2px;
-  margin: 0 auto 19px;
+  margin: 0 auto 10px;
   border-radius: 800%;
   width: 100%;
 }
@@ -123,8 +124,8 @@ button:hover:after {
 .user-icon {
   border: solid 3px rgba(255, 255, 255, 0.986);
   border-radius: 50%;
-  height: 92px;
-  width: 92px;
+  height: 80px;
+  width: 80px;
   margin: 0 auto 34px;
   opacity: 0.6;
   overflow: hidden;
