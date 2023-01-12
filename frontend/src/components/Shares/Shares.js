@@ -2,8 +2,8 @@ import React from "react";
 import "./shares.css";
 import Share from "./single_share";
 import axios from "axios";
-import Footer from "../../Footer";
-import Nav from "../../Navigation";
+import Footer from "../../mainComponents/Footer";
+import Nav from "../../mainComponents/Navigation";
 //const axios = require("axios").default;
 
 class SharesList extends React.Component {
@@ -61,7 +61,7 @@ class SharesList extends React.Component {
   render() {
     return (
       <div className="container-shares">
-        <Nav/>
+        <Nav />
         <div class="tabele">
           <table>
             <caption>Akcje</caption>
@@ -88,7 +88,7 @@ class SharesList extends React.Component {
             ))}
           </table>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

@@ -1,8 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "./components/css/footer.css";
-import logo from "./components/css/images/logo.png";
-import log_in from "./components/css/images/log_in.png";
+import "../components/css/footer.css";
+import logo from "../components/css/images/logo.png";
+import log_in from "../components/css/images/log_in.png";
 
 function Footer(props) {
   return (

@@ -2,8 +2,8 @@ import React from "react";
 import "./Currencies.css";
 import Currency from "./single_currency";
 import axios from "axios";
-import Footer from "../../Footer";
-import Nav from "../../Navigation";
+import Footer from "../../mainComponents/Footer";
+import Nav from "../../mainComponents/Navigation";
 //const axios = require("axios").default;
 
 class CurrenciesList extends React.Component {
@@ -33,11 +33,11 @@ class CurrenciesList extends React.Component {
         console.log(error);
       });
   }
-  
+
   render() {
     return (
       <div className="container-currencies">
-        <Nav/>
+        <Nav />
         <div class="tabele">
           <table>
             <caption>Kursy walut</caption>
@@ -62,7 +62,7 @@ class CurrenciesList extends React.Component {
             ))}
           </table>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

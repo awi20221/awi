@@ -1,8 +1,8 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./components/css/nav_bar.css";
-import logo from "./components/css/images/logo.png";
+import "../components/css/nav_bar.css";
+import logo from "../components/css/images/logo.png";
 
 const Nav = () => {
   const userRef = useRef();

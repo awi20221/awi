@@ -6,7 +6,7 @@ import SharesList from "./components/Shares/Shares";
 import Calculator from "./components/Calculator/Calculator";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
-import NotFound from "./NotFound";
+import NotFound from "./mainComponents/NotFound";
 //import Nav from "./Navigation";
 import './App.css'
 

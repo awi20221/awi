@@ -67,10 +67,11 @@ async function isLoginAvailable(login){
                 res.send('User created successfully');
                 return;
             }
-            res.send('Login unavailable')
-            return;
+            return res.status(409);
+            //return;
         }
-        res.send('Email unavailable')
+        return res.status(409);
+        //return;
     }
 
 module.exports = {login,register, verifyRequestAvailability, verifyIfAdmin};

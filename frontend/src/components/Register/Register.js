@@ -45,61 +45,74 @@ const Register = () => {
   }, [password]);
 
   useEffect(() => {
+    userRef.current.focus();
+  }, []);
+
+  useEffect(() => {
     setErrMsg("");
-  }, [fullName, login, email, password]);
+  }, [password, login, email, fullName]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/api/auth/register",
-        {
-          fullName: fullName,
-          login: login,
-          email: email,
-          password: password,
-        }
-      );
-      console.log(response.data);
-      setSuccess(true);
-
+    //try {
+    if (login && email && password) {
       //clear the labels
       setFullName("");
       setPassword("");
       setEmail("");
       setLogin("");
-      
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("No Server Response");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
-      } else {
-        setErrMsg("Registration Failed");
-      }
+      const response = await axios
+        .post("http://localhost:3001/api/auth/register", {
+          fullName: fullName,
+          login: login,
+          email: email,
+          password: password,
+        })
+        .then((response) => {
+          console.log(response.data);
+          setSuccess(true);
+        })
+        .catch((error) => {
+          console.error(error);
+          if (!error?.response) {
+            setErrMsg("No Server Response");
+          } else if (error.response?.status === 409) {
+            setErrMsg("Username Taken");
+          } else {
+            setErrMsg("Registration Failed");
+          }
+        });
+    } else {
+      setErrMsg("Registration Failed");
     }
   };
 
   return (
-    <>
+
+    <div className="container-register">
       {success ? (
-        <section>
-          <h1>Rejestracja zakończona sukcesem!</h1>
+        <section className="RegSucces">
+          <h1 className="RegSuccesText">Rejestracja zakończona sukcesem!</h1>
           <p>
-            <Link to="/login">
-              Zaloguj się
-            </Link>
+            <Link to="/login" className="Log-in">Zaloguj się</Link>
           </p>
-          <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} >{errMsg}</p>
         </section>
       ) : (
-        <div className="container-register">
+        <>
           <div className="logo-login">
             <Link to="/">
               <img src={logo} alt="Logo z napisem AWI" />
             </Link>
           </div>
+
           <form className="form" id="registerForm" onSubmit={handleSubmit}>
+            <p
+              ref={errRef}
+              className={errMsg ? "errmsg" : "offscreen"}
+              aria-live="assertive"
+            >
+              {errMsg}
+            </p>
             <div className="register-icon">
               <img src={register_icon} alt="Obrazek rejestracji użytkownika" />
             </div>
@@ -166,24 +179,17 @@ const Register = () => {
             </div>
 
             <div className="spacer-form"></div>
-            <button
-              type="submit"
-              className="button form-button"
-              disabled={
-                !validName || !validPassword || !validEmail || !validLogin
-                  ? true
-                  : false
-              }
-            >
+            <button type="submit" className="button form-button">
               Zarejestruj się
             </button>
           </form>
           <div className="copyright">
             <p>2022 &copy; Aplikacja Wspomagająca Inwestycje</p>
           </div>
-        </div>
+        </>
       )}
-    </>
+      </div>
+
   );
 };
 
