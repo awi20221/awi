@@ -20,6 +20,7 @@ nav {
   margin: 0;
   text-align: center;
   font-family: "Poppins", sans-serif;
+  position: relative;
 }
 
 @media screen and (max-width: 868px) {
@@ -29,4 +30,13 @@ nav {
     border-top: 2px solid rgb(26, 47, 36);
     border-bottom: 2px solid rgb(26, 47, 36);
   }
+}
+
+.Spacer{
+  height:10px;
+}
+
+.SharesDate{
+  font-size: 16px;
+  font-weight: lighter;
 }

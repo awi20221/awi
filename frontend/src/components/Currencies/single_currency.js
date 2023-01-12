@@ -2,12 +2,6 @@ import React from "react";
 
 function Currency(props) {
   return (
-    //<div className="currency">
-    //<div className="currency-element">{props.c_name}</div>
-    //<div className="currency-element">{props.c_name}</div>
-    //<div className="currency-element">{props.mid}</div>
-    //<div className="currency-element">{props.date}</div>
-    //</div>
     <tbody>
     <tr>
       <td>{props.c_name}</td>
@@ -15,6 +9,7 @@ function Currency(props) {
       <td>{props.mid}</td>
       <td>{props.date}</td>
     </tr>
+    <div className="Spacer"></div>
     </tbody>
   );
 }

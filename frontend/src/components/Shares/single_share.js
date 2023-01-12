@@ -11,6 +11,7 @@ function Share(props) {
       <td>{props.change}</td>
       <td>{props.date}</td>
     </tr>
+    <div className="Spacer"></div>
     </tbody>
   );
 }

@@ -6,6 +6,26 @@ import Footer from "../../mainComponents/Footer";
 import Nav from "../../mainComponents/Navigation";
 //const axios = require("axios").default;
 
+let lastDate = "2023-01-02"; //data najstarsza na sztyno - w razie błędu będzie zawsze działać
+//no chyba ze juz z bazy zostanie usuniete
+
+async function fetchLastDate() {
+  let url = "http://localhost:3001/api/shares/update-time";
+  await axios
+    .get(url)
+    .then((response) => {
+      //console.log(response.data);
+      lastDate = response.data.effectiveDate;
+    })
+    .catch((error) => {
+      console.log(error);
+      alert(error);
+    });
+  console.log(lastDate);
+}
+
+fetchLastDate();
+
 class SharesList extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +40,7 @@ class SharesList extends React.Component {
   }
 
   async fetchCurrencies() {
-    let url = "http://localhost:3001/api/shares ";
+    let url = "http://localhost:3001/api/shares/effectiveDate/" + lastDate;
     axios
       .get(url)
       .then((response) => {
@@ -34,62 +54,43 @@ class SharesList extends React.Component {
       });
   }
 
-  /*
-  //sposob 1
-    const { data } = await axios({
-      method: "get",
-      url: "http://localhost:3001/api/currencies",
-    });
-    //const resp = axios.get("http://localhost:3001/api/currencies");
-    console.log(data);
-    //const cur = resp.data;
-    this.setState({ data: data.currencies});
-
-    //sposob 2
-    try { 
-      const { data } = await axios({
-        method: "get",
-        url: "http://localhost:3001/api/currencies",
-      });
-      console.log(data);
-      //this.setState({ data });
-    } catch {
-      console.error("Wystąpił błąd podczas pobierania danych");
-    }
-  } */
-
   render() {
     return (
-      <div className="container-shares">
+      <>
         <Nav />
-        <div class="tabele">
-          <table>
-            <caption>Akcje</caption>
-            <thead>
-              <tr>
-                <th>Nazwa</th>
-                <th>Minimal Rate</th>
-                <th>Maximal Rate</th>
-                <th>Change</th>
-                <th>Data</th>
-              </tr>
-            </thead>
+        <div className="container-shares">
+          <div className="tabele">
+            <table>
+              <caption>
+                Akcje
+                <p className="CurrenciesDate">Data: {lastDate}</p>
+              </caption>
+              <thead>
+                <tr>
+                  <th>Nazwa</th>
+                  <th>Minimal Rate</th>
+                  <th>Maximal Rate</th>
+                  <th>Change</th>
+                  <th>Data</th>
+                </tr>
+              </thead>
 
-            {Array.from(this.state.shares).map((share) => (
-              <Share //model w osobnym pliku
-                key={share._id}
-                name={share.name}
-                minimalRate={share.minimalRate}
-                maximalRate={share.maximalRate}
-                change={share.change}
-                id={share._id}
-                date={share.effectiveDate}
-              />
-            ))}
-          </table>
+              {Array.from(this.state.shares).map((share) => (
+                <Share //model w osobnym pliku
+                  key={share._id}
+                  name={share.name}
+                  minimalRate={share.minimalRate}
+                  maximalRate={share.maximalRate}
+                  change={share.change}
+                  id={share._id}
+                  date={share.effectiveDate}
+                />
+              ))}
+            </table>
+          </div>
         </div>
         <Footer />
-      </div>
+      </>
     );
   }
 }
