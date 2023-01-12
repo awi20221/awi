@@ -64,7 +64,7 @@ async function login (req, res, next) {
         const accessToken = jwt.sign({id: req.user._id}, process.env.JWT_SECRET, {expiresIn: 1200});
         return res.status(200).send({accessToken});
     } else
-        return res.status(209).send('Activate your account')
+        return res.status(409).send('Activate your account')
 }
 
 
