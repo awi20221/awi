@@ -1,6 +1,7 @@
 const axiosAPI = require('../axios/axios').axiosAPI
 
-
+//INFO
+//Nieużywany plik - przeniesiony do modułu logowania, do usunięcia potem
 
 const loginForm = document.querySelector("#loginForm");
 loginForm.addEventListener("submit", async e => {

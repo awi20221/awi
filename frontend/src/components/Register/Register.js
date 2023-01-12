@@ -142,7 +142,6 @@ const Register = () => {
                 className="form-control"
                 id="login"
                 name="login"
-                ref={userRef}
                 onChange={(e) => setLogin(e.target.value)}
                 value={login}
               />
@@ -157,7 +156,6 @@ const Register = () => {
                 className="form-control"
                 id="email"
                 name="email"
-                ref={userRef}
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
               />
@@ -172,7 +170,6 @@ const Register = () => {
                 className="form-control form-control-textarea"
                 name="password"
                 id="password"
-                ref={userRef}
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />

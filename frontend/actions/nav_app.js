@@ -1,3 +1,7 @@
+//INFO
+//Nieużywany plik - taki skrypt odpowiedzialny za rozijany pasek nawigacji 
+//nie działa w reakcie wiec do naprawy potem jak zostanie czas, zakomentowany zeby nie bylo warningow
+
 // const navSlider = () => {
 //   const burger = document.querySelector(".burger");
 //   const nav = document.querySelector(".nav-links");

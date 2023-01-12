@@ -1,5 +1,7 @@
 const axiosAPI = require('../axios/axios').axiosAPI
 
+//INFO
+//Nieużywany plik - przeniesiony do modułu rejestracji, do usunięcia potem
 
 const registerForm = document.querySelector("#registerForm");
 registerForm.addEventListener("submit", async e => {
