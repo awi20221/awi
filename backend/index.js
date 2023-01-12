@@ -8,6 +8,7 @@ const auth = require("./routes/auth");
 const users = require("./routes/users");
 const currencies = require("./routes/currencies");
 const shares = require("./routes/shares");
+const mail = require("./routes/mail")
 const defaultUser = require("./config/defaultUser");
 const passport = require("./config/passport");
 const { notFound, catchErrors } = require("./middlewares/errors");
@@ -61,6 +62,7 @@ app.use("/api/auth", auth.apiAuth());
 app.use("/api/users", users.apiUsers());
 app.use("/api/currencies", currencies.apiCurrencies());
 app.use("/api/shares", shares.apiShares());
+app.use("/api/mail", mail.apiMailSender());
 
 
 
