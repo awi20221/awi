@@ -1,6 +1,6 @@
 const User = require('../models/user').userModel;
 const jwt = require('jsonwebtoken');
-
+const mailController = require('./mailController')
 
 /**
  *  Funckja umożliwiającą autentyfikację użytkownika podczas wywoływania metod post/put/delete w celu modyfikacji swojego konta,
@@ -10,7 +10,6 @@ const jwt = require('jsonwebtoken');
  *  Uwaga: ADMIN ma dostęp do wszystkich danych
  */
 
-//TODO: czy slug w tej funkcji jest potrzebny ?
 async function verifyRequestAvailability(req, res, next){
     if( String(req.user.role) === "ADMIN"){
         return true;
@@ -48,12 +47,25 @@ async function isLoginAvailable(login){
     return false;
 }
 
-
-  async function login (req, res, next) {
-        // generate token
-        const accessToken = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: 1200 });
-        return res.send({ accessToken});
+async function isUserActivated(login){
+    const res = await User.find({login: login}, 'active');
+    if(res[0] !== undefined) {
+        if (res[0].active === true) {
+            return true;
+        }
     }
+    return false;
+}
+
+async function login (req, res, next) {
+    if(await isUserActivated(req.body.login))
+    {
+        // generate token
+        const accessToken = jwt.sign({id: req.user._id}, process.env.JWT_SECRET, {expiresIn: 1200});
+        return res.status(200).send({accessToken});
+    } else
+        return res.status(209).send('Activate your account')
+}
 
 
     //TODO: dodać potwierdzenie adresu email
@@ -64,17 +76,22 @@ async function isLoginAvailable(login){
             if(await isLoginAvailable(login)){
                 const user = new User({ fullName: fullName, login: login, email: email, role: role });
                 await User.register(user, password);
-                res.send('User created successfully');
+                await mailController.sendLaunchTServerMail(email, login)
+                res.send('User created successfully, please click the activation link on your mail');
                 return;
             }
             return res.status(409);
-            //return;
         }
         return res.status(409);
-        //return;
     }
 
-module.exports = {login,register, verifyRequestAvailability, verifyIfAdmin};
-//module.exports = {login,register}; //ZMIANA TYMCZASOWA!
+async function activateAccount(req,res,next) {
+    const userCollection = User.collection
+    await userCollection.findOneAndUpdate({login: req.params.login}, {$set: {active: true}})
+    return res.redirect(302, 'http://localhost:3000/login')
+}
+
+
+module.exports = {login,register, verifyRequestAvailability, verifyIfAdmin, activateAccount};
 
 

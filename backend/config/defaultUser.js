@@ -14,6 +14,7 @@ const initializeData = async () => {
                 role: "ADMIN",
                 login: "admin",
                 email: "awi2022.1.0@gmail.com",
+                active: true
             });
         const password = "admin";
         await User.register(user, password).catch(error => {

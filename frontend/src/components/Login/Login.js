@@ -48,6 +48,8 @@ const Login = () => {
             setErrMsg('Missing Username or Password');
         } else if (err.response?.status === 401) {
             setErrMsg('Unauthorized');
+        } else if (err.response?.status === 209) {
+            setErrMsg('Unauthorized')
         } else {
             setErrMsg('Login Failed');
         }

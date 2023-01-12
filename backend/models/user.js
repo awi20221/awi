@@ -26,6 +26,10 @@ const userSchema = mongoose.Schema({
         type: String,
         trim: true,
         default: 'USER'
+    },
+    active: {
+        type: Boolean,
+        default: false
     }
 },
     {

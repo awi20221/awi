@@ -1,13 +1,18 @@
 const {tTransporter} = require('../config/tmail')
-const authController = require('../controllers/authController')
 const User = require('../models/user').userModel
+const config = require('../config/config')
 
-async function setLaunchMailOptions(registeredEmail) {
+async function setLaunchMailOptions(registeredEmail, login) {
+    let url = config.configValues.serverURL + '/api/auth/activate-account/' + login
     return {
         from: '"AWI 👻", <awi20221@t.pl>',
         to: registeredEmail,
         subject: '🚀 Your awi launch verification',
-        html: ''
+        html: "<h3>Informacje</h3>" +
+            "<p>Dziękujemy za utworzenie konta na naszej stronie. Poniżej znajdziesz link aktywacyjny.</p>" +
+            "<h4>Aktywacja konta</h4>" +
+            "<p>Aby aktywować konto kliknij: " + url +
+            "<h3><p>AWI App Team &copy; 2023 🚀</p></h3>"
     }
 }
 
@@ -66,14 +71,15 @@ async function setContactFormulaeMailOptions(subject,text) {
  * Enables to send mail from the server without using axios, it is for register purposes
  */
 
-function sendLaunchTServerMail(registeredEmail) {
-    tTransporter.sendMail(setLaunchMailOptions(registeredEmail), (err, info) => {
+async function sendLaunchTServerMail(registeredEmail, login) {
+    await tTransporter.sendMail(await setLaunchMailOptions(registeredEmail,login), (err, info) => {
         if (err) {
-            return console.log(err);
+            return console.log('sendLaunchTServerMail: ', err);
         }
         console.log('Wiadomosc z potwierdzeniem rejestracji %s wysłana %s', info.messageId, info.response)
     })
 }
+
 /**
  * Enables to send any mail by administrator to any user with using axios
  */

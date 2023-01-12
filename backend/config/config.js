@@ -12,7 +12,8 @@ const configValues = {
         port: Number(process.env.PORT || 3001),
         database: process.env.DATABASE || dburl.mongoUrl,
         // TOKEN_SECRET_JWT: 'jWt9982_s!tokenSecreTqQrtw'
-    }
+    },
+    serverURL: 'http://localhost:3001'
 };
 
 

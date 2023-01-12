@@ -36,6 +36,7 @@ async function findAll(req, res, next) {
 
 }
 
+//TODO: update password
 async function updatePassword(req,res,next) {
     if (await authController.verifyRequestAvailability(req, res, next)) {
         if(req.body.newPassword === undefined || !validatePasswordComplexity(req.body.newPassword)){

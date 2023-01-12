@@ -15,6 +15,9 @@ function apiAuth() {
 
     api.post('/register', authController.register);
 
+    //POST api/auth/activate-account/:login (link generated in activate email)
+    api.get('/activate-account/:login', authController.activateAccount);
+
     return api;
 }
 
