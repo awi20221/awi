@@ -57,11 +57,11 @@ async function setAdminMailOptions(userNames,subject,text) {
     }
 }
 
-async function setContactFormulaeMailOptions(subject,text) {
+async function setContactFormulaeMailOptions(text, email) {
     return {
-        from: '"Contact formulae", <awi20221@t.pl>',
+        from: '"AWI HELP", <awi20221@t.pl>',
         to: 'awi2022.1.0@gmail.com',
-        subject: subject,
+        subject: 'AWI HELP ' + email,
         text: text
     }
 }
@@ -99,9 +99,9 @@ async function sendTMail(req,res,next) {
  * Enables to send mail by user to administrator from contact formulae on HELP page
  */
 async function sendContactFormulae(req,res,next) {
-    await tTransporter.sendMail(await setContactFormulaeMailOptions(req.body.subject, req.body.text), (err) => {
+    await tTransporter.sendMail(await setContactFormulaeMailOptions(req.body.text, req.body.email), (err) => {
         if (err) {
-            return res.status(200).send('Cannot send contact formulae ', err);
+            return res.status(401).send('Cannot send contact formulae ', err);
         }
         return res.status(200).send('Wiadomość została wysłana');
     })

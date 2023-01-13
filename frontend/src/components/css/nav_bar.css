@@ -6,6 +6,9 @@ nav {
   min-height: 8vh;
   max-height: 8vh;
   font-family: "Poppins", sans-serif;
+  z-index: 1;
+  background: linear-gradient(90deg, #003100 10%, #000 98%);
+;
 }
 
 /*tytul/logo/odnosnik do home*/
