@@ -26,6 +26,9 @@ function WelcomeText(props) {
           <li>
             <Link to="/waluty">KURSY&nbsp;WALUT</Link>
           </li>
+          <li>
+            <Link to="/help">HELP</Link>
+          </li>
         </ul>
         <div className="burger">
           <div className="line1"></div>

@@ -50,6 +50,9 @@ const Nav = () => {
         <li value={navLinks} ref={userRef}>
           <Link to="/waluty">KURSY&nbsp;WALUT</Link>
         </li>
+        <li value={navLinks} ref={userRef}>
+          <Link to="/help">HELP</Link>
+        </li>
       </ul>
       <div className="burger" onClick={NavSlider}  ref={userRef} >
         <div className="line1"></div>

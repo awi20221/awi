@@ -28,6 +28,8 @@ function Footer(props) {
         <Link to="/spolki">Spółki</Link>
         <Link to="/waluty">Kursy&nbsp;walut</Link>
         <Link to="/kalkulator">Kalkulator</Link>
+        <Link to="/help">Help</Link>
+
       </p>
       <p>2022 &copy; Aplikacja Wspomagająca Inwestycje</p>
     </div>

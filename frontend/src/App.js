@@ -6,6 +6,7 @@ import SharesList from "./components/Shares/Shares";
 import Calculator from "./components/Calculator/Calculator";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
+import Help from "./components/Help/Help"
 import NotFound from "./mainComponents/NotFound";
 //import Nav from "./Navigation";
 import './App.css'
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/kalkulator" element={<Calculator />} />
+        <Route path="/help" element={<Help />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
