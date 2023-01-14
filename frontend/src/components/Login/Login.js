@@ -45,23 +45,18 @@ const Login = () => {
     } catch (err) {
         if (!err?.response) {
             setErrMsg('No Server Response');
-            setLogin('');
-            setPassword('');
+
         } else if (err.response?.status === 400) {
             setErrMsg('Missing Username or Password');
-            setLogin('');
-            setPassword('');
+
         } else if (err.response?.status === 401) {
-            setLogin('');
-            setPassword('');
+
             setErrMsg('Unauthorized');
         } else if (err.response?.status === 409) {
-            setLogin('');
-            setPassword('');
+
             setErrMsg('Check-out your mail box and activate account')
         } else {
-            setLogin('');
-            setPassword('');
+
             setErrMsg('Login Failed');
         }
         errRef.current.focus();
