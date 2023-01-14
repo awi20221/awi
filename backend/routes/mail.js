@@ -17,7 +17,7 @@ function apiMailSender (){
     //Available for all logged users to send email from to contact formulae
     //In req.body.text --> 'paste text you want to send'
 
-    api.post('/send-to-awi', mailController.sendContactFormulae)     //TODO: logged users
+    api.post('/send-to-awi', mailController.sendContactFormulae)     //TODO: logged users albo i nie !
 
 
     return api;
