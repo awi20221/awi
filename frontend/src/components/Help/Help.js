@@ -55,7 +55,7 @@ class contactFormulae extends React.Component {
                 <Nav />
                     <form id="form-help" onSubmit={this.handleSubmit}>
                         <div className="formulae-start">
-                            <h2>CONTACT US</h2>
+                            <h2 className="YouHaveToNameIt">CONTACT US</h2>
                             <p id="p-formulae" type="Name:">
                                 <input id="small-formulae-input" type="text" required placeholder="Podaj imię" value={this.state.valueName} onChange={this.handleChangeName} />
                             </p>
@@ -71,7 +71,6 @@ class contactFormulae extends React.Component {
                             </div>
                         </div>
                     </form>
-                <Footer />
             </div>
         );
     }

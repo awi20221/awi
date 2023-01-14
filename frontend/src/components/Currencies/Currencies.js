@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import "./Currencies.css";
 import axios from "../../axios/axios";
 import Footer from "../../mainComponents/Footer";
 import Nav from "../../mainComponents/Navigation";
 import { useGlobalFilter, useSortBy, useTable } from "react-table";
 import tw from "twin.macro";
-import { GlobalFilter } from "./globalFilter";
+import { GlobalFilter } from "../../mainComponents/globalFilter";
 
 const Table = tw.table`
   table-fixed
@@ -38,15 +38,25 @@ border-green-500
 p-5
 `;
 
-
 const CurrenciesList = () => {
   const [currencies, setCurrencies] = useState([]);
   let [lastDate, setLastDate] = useState("2022-10-03"); //data najstarsza na sztyno - w razie błędu będzie zawsze działać
   //no chyba ze juz z bazy zostanie usuniete
+  const [dataChange, setDataChange] = useState("");
+  const [notFounderr, setNotFounderr] = useState("");
+  const errRef = useRef();
 
   useEffect(() => {
     fetchLastDate().then((lastDate) => fetchCurrencies(lastDate));
   }, [lastDate]);
+
+  useEffect(() => {
+    fetchLastDate().then((lastDate) => fetchCurrencies(lastDate));
+  }, [lastDate]);
+
+  useEffect(() => {
+    setNotFounderr("");
+  }, [dataChange]);
 
   async function fetchLastDate() {
     let url = "http://localhost:3001/api/currencies/update-time";
@@ -71,34 +81,20 @@ const CurrenciesList = () => {
       .then((response) => {
         console.log(response.data.currencies);
         setCurrencies(response.data.currencies);
+        if (!response.data.currencies.length)
+          setNotFounderr(
+            "Takiej daty nie ma w bazie danych lub została źle wpisana"
+          );
       })
       .catch((error) => {
         console.log(error);
+        if (error.response?.status === 404)
+          setNotFounderr(
+            "Takiej daty nie ma w bazie danych lub została źle wpisana"
+          );
         //alert(error);
       });
   }
-
- /* const columns = useMemo(
-    () => [
-      {
-        Header: "Waluta",
-        accessor: "currency",
-      },
-      {
-        Header: "Skrót",
-        accessor: "code",
-      },
-      {
-        Header: "Mid",
-        accessor: "mid",
-      },
-      {
-        Header: "Data",
-        accessor: "effectiveDate",
-      },
-    ],
-    []
-  );*/
 
   const currenciesData = useMemo(() => [...currencies], [currencies]);
 
@@ -106,7 +102,7 @@ const CurrenciesList = () => {
     () =>
       currencies[0]
         ? Object.keys(currencies[0])
-            .filter((key) => key !== "_id" && key != "slug" && key != "__v")
+            .filter((key) => key !== "_id" && key !== "slug" && key !== "__v")
             .map((key) => {
               return { Header: key, accessor: key };
             })
@@ -138,20 +134,38 @@ const CurrenciesList = () => {
 
   return (
     <>
-    <Nav/>
-    <h3 className="CurrenciesTitle">Kursy walut</h3>
+      <Nav />
+      <h3 className="CurrenciesTitle">Kursy walut</h3>
       <GlobalFilter
         preGlobalFilteredRows={preGlobalFilteredRows}
         setGlobalFilter={setGlobalFilter}
         globalFilter={state.globalFilter}
       />
-      <p className="CurrenciesDate">Data: {lastDate}</p>
-      <Table className="tabele"{...getTableProps()}>
+      <div className="DataChanger">
+        <p className="CurrenciesDate">Najmłodsza data: {lastDate}</p>
+        <input
+          className="DataInput"
+          placeholder="YYYY-MM-DD"
+          onChange={(e) => {
+            setDataChange(e.target.value);
+          }}
+        ></input>
+        <button
+          className="DataChangeButton"
+          onClick={(e) => {
+            fetchCurrencies(dataChange);
+          }}
+        >
+          Wyszukaj datę
+        </button>
+      </div>
+
+      <Table className="tabele" {...getTableProps()}>
         <TableHead>
           {headerGroups.map((headerGroup) => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <TableHeader 
+                <TableHeader
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                 >
                   {column.render("Header")}
@@ -161,6 +175,9 @@ const CurrenciesList = () => {
             </TableRow>
           ))}
         </TableHead>
+        <p ref={errRef} className={notFounderr ? "notFounderr" : "offscreen"}>
+          {notFounderr}
+        </p>
         <TableBody {...getTableBodyProps()}>
           {rows.map((row, idx) => {
             prepareRow(row);
@@ -174,17 +191,15 @@ const CurrenciesList = () => {
                   <TableData {...cell.getCellProps()}>
                     {cell.render("Cell")}
                   </TableData>
-                  
                 ))}
               </TableRow>
             );
           })}
         </TableBody>
       </Table>
-      <Footer/>
+      <Footer />
     </>
   );
 };
 
 export default CurrenciesList;
-

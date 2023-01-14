@@ -24,7 +24,6 @@ const TableContainer = tw.div`
   pb-32
 `;
 
-
 function App() {
   return (
     
@@ -32,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<WelcomeText />} />
         <Route path="/waluty" element={<TableContainer><CurrenciesList /></TableContainer>} />
-        <Route path="/spolki" element={<SharesList />} />
+        <Route path="/spolki" element={<TableContainer><SharesList /></TableContainer>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/kalkulator" element={<Calculator />} />

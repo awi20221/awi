@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0px;
@@ -7,21 +6,21 @@
 
 :root {
   --main_green: rgba(22, 48, 43, 0.914);
+  --text_green:rgb(29, 65, 58);
 }
 
 nav {
   background: linear-gradient(to bottom right, #000000, var(--main_green));
 }
 
-.container-shares {
-  width: 100vw;
-  height: 100vh;
+.container-currencies {
   background: #ffffff;
   margin: 0;
   text-align: center;
   font-family: "Poppins", sans-serif;
   position: relative;
 }
+
 
 @media screen and (max-width: 868px) {
   .nav-links {
@@ -32,11 +31,143 @@ nav {
   }
 }
 
-.Spacer{
-  height:10px;
+
+.tabele {
+  max-width: 980px;
+  background: none;
+  padding: 15px 15px;
+  color: rgb(22, 48, 43);
+  font-family: "Poppins", sans-serif;
+  margin: 10px auto 30px;
+  border-collapse: collapse;
 }
 
-.SharesDate{
-  font-size: 16px;
-  font-weight: lighter;
+
+.tabele thead {
+  height: 60px;
+  width: 100%;
+  background: rgb(22, 48, 43);
+  color: rgba(240, 255, 255, 0.929);
+  position: sticky;
+  top: 0px;
+}
+
+.tabele th {
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.tabele tr {
+  text-align: center;
+  padding: 8px 4px;
+  border-bottom: solid 2px rgb(255, 255, 255);
+}
+
+.tabele tbody tr {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 2px 3px 0 rgba(0, 0, 0, 0.712);
+  border: none;
+  transition: all 0.3s;
+}
+
+.tabele tbody tr:hover {
+  background: rgba(17, 37, 32, 0.715);
+  color: #fff;
+}
+
+.tabele td {
+  padding: 10px 24px;
+  text-align: center;
+}
+
+.Spacer{
+  height:40px;
+}
+
+.SearchText,
+.CurrenciesDate{
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text_green);
+  margin-right: 1.5rem;
+  line-height: 1.75rem;
+}
+
+.CurrenciesTitle{
+  font-size: 28px;
+  font-weight: 600;
+  font-family:'Poppins', sans-serif;
+  margin-top: 10px;
+  color: var(--text_green);
+}
+
+
+.DataChanger{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+  width: 50%;
+}
+
+
+.DataChangeButton:focus {
+  outline: solid 3px rgba(22, 48, 43, 0.63);
+}
+
+.DataChangeButton {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: rgb(22, 48, 43);
+  font-size: 17px;
+  color: #fff;
+  padding: 14px 14px;
+  box-shadow: none;
+  margin-left: 1.5rem;
+  margin-top: 0;
+}
+
+.DataChangeButton::after {
+  background: #ffffff5f;
+  content: "";
+  position: absolute;
+  left: -70px;
+  top: -30px;
+  transform: skewX(-20deg);
+  transition: left 0.3s linear;
+  display: block;
+  height: 80px;
+  width: 50px;
+}
+
+.FilterInput,
+.DataInput{
+    height: 2rem;
+    border-radius: 0.5rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(20 83 45);
+    padding: 1rem;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    color: var(--text_green);
+    margin-top: 0;
+    box-shadow: 0px 0px 7px 0 rgba(10, 10, 10, 0.484);
+}
+
+.DataInput{
+  width: 35%;
+}
+
+.notFounderr {
+  color: rgb(255, 255, 255);
+  position: static;
+  font-weight: bold;
+  padding: 0.9rem;
+  width: 100%;
+  margin-bottom: 0.8rem;
+  position: relative;
+  background-color: rgba(178, 34, 34, 0.921);
+  box-shadow: 0px 0px 10px 0 rgba(1, 1, 1, 0.407);
 }

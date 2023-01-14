@@ -45,6 +45,7 @@ nav {
 
 .tabele thead {
   height: 60px;
+  width: 100%;
   background: rgb(22, 48, 43);
   color: rgba(240, 255, 255, 0.929);
   position: sticky;
@@ -83,10 +84,13 @@ nav {
   height:40px;
 }
 
+.SearchText,
 .CurrenciesDate{
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--text_green);
+  margin-right: 1.5rem;
+  line-height: 1.75rem;
 }
 
 .CurrenciesTitle{
@@ -97,11 +101,73 @@ nav {
   color: var(--text_green);
 }
 
-.FilterInput{
-  color: var(--text_green);
+
+.DataChanger{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+  width: 50%;
+}
+
+
+.DataChangeButton:focus {
+  outline: solid 3px rgba(22, 48, 43, 0.63);
+}
+
+.DataChangeButton {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: rgb(22, 48, 43);
+  font-size: 17px;
+  color: #fff;
+  padding: 14px 14px;
+  box-shadow: none;
+  margin-left: 1.5rem;
   margin-top: 0;
 }
 
-.SearchText{
-  border-bottom: none;
+.DataChangeButton::after {
+  background: #ffffff5f;
+  content: "";
+  position: absolute;
+  left: -70px;
+  top: -30px;
+  transform: skewX(-20deg);
+  transition: left 0.3s linear;
+  display: block;
+  height: 80px;
+  width: 50px;
+}
+
+.FilterInput,
+.DataInput{
+    height: 2rem;
+    border-radius: 0.5rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(20 83 45);
+    padding: 1rem;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    color: var(--text_green);
+    margin-top: 0;
+    box-shadow: 0px 0px 7px 0 rgba(10, 10, 10, 0.484);
+}
+
+.DataInput{
+  width: 35%;
+}
+
+.notFounderr {
+  color: rgb(255, 255, 255);
+  position: static;
+  font-weight: bold;
+  padding: 0.9rem;
+  width: 100%;
+  margin-bottom: 0.8rem;
+  position: relative;
+  background-color: rgba(178, 34, 34, 0.921);
+  box-shadow: 0px 0px 10px 0 rgba(1, 1, 1, 0.407);
 }

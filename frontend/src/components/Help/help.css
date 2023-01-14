@@ -1,12 +1,12 @@
 #form-help {
+    padding-bottom: 7rem;;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
     max-width: none;
-    background: #fff url(https://media.istockphoto.com/id/678603878/pl/zdj%C4%99cie/spadaj%C4%85ce-pieni%C4%85dze-na-bia%C5%82ym-tle-dolary-deszczu-ilustracja-3d.jpg?s=1024x1024&w=is&k=20&c=Z5tlv77pR973PtrLkqhihvCCEe8et05Xk9zE4k5kkm8=) center center/cover no-repeat fixed;
-
-
+    background: linear-gradient(rgba(0, 0, 0, 0.51), rgba(3, 95, 78, 0.405)), url("../css/images/contactUs.jpg") center center/cover no-repeat fixed;
 }
 
 #container-formulae {
@@ -28,14 +28,15 @@
     height:580px;
     background:#e6e6e6;
     border-radius:8px;
-    box-shadow:0 0 40px -10px #000;margin:calc(50vh - 220px) auto;
+    box-shadow:0 0 40px -10px #000;
+    margin:calc(50vh - 220px) auto;
     padding:20px 30px;
     /*max-width:calc(100vw - 40px);*/
     box-sizing:border-box;
     font-family:'Montserrat',sans-serif;position:relative
 }
 
-h2 {
+.YouHaveToNameIt{
     margin:10px 0;
     padding-bottom:10px;
     width:180px;
