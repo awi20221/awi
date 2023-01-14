@@ -1,29 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useRef, useState, useEffect, useContext } from "react";
-import AuthContext from "../../context/AuthProvider";
+import React, { useRef, useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import useAuth from "../../hooks/useAuth";
 import axios from "../../axios/axios";
 import "./login_form.css";
 import logo from "../css/images/logo.png";
 
 const Login = () => {
-  const { setAuth } = useContext(AuthContext);
+  const {setAuth} = useAuth();
+  //const{logstate} = useAuth();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const userRef = useRef();
   const errRef = useRef();
 
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    userRef.current.focus();
+    const loggedInUser = window.localStorage.getItem("Logged in?");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      console.log(foundUser.login, foundUser.password,foundUser.accessToken);
+      setAuth(foundUser.login, foundUser.password,foundUser.accessToken);
+    }
   }, []);
 
   useEffect(() => {
     setErrMsg("");
   }, [login, password]);
 
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,15 +45,17 @@ const Login = () => {
           login: login,
           password: password
     });
-        console.log(JSON.stringify(response?.data));
-        console.log(JSON.stringify(response));
+        //console.log(JSON.stringify(response?.data));
         const accessToken = response?.data?.accessToken;
-        const roles = response?.data?.roles;
-        setAuth({ login, password, roles, accessToken });
+        //const roles = response?.data?.roles;
+        //console.log(roles);
+        setAuth({ login, password, accessToken });
+        //setAuth(true);
+        //console.log(JSON.stringify({login, password, accessToken}));
+        window.localStorage.setItem('Logged in?', JSON.stringify({login, password, accessToken }))
         setLogin('');
         setPassword('');
-        setSuccess(true);
-
+        navigate(from, { replace: true });
     } catch (err) {
         if (!err?.response) {
             setErrMsg('No Server Response');
@@ -65,16 +79,6 @@ const Login = () => {
 
   return (
     <div className="container-login">
-      {success ? (
-        <section className="LogSucces">
-          <h1 className="LogSuccesText">Zalogowałeś się pomyślnie</h1>
-          <p>
-            <Link to="/" className="HomeLink">
-              Home Page
-            </Link>
-          </p>
-        </section>
-      ) : (
         <>
           <div className="logo-login">
             <Link to="/">
@@ -132,44 +136,14 @@ const Login = () => {
                 Zarejestruj sie
               </Link>
             </p>
+            
           </form>
           <div className="copyright">
             <p>2022 &copy; Aplikacja Wspomagająca Inwestycje</p>
           </div>
         </>
-      )}
     </div>
   );
 };
 
 export default Login;
-
-/*const axiosAPI = require('../axios/axios').axiosAPI
-
-
-
-const loginForm = document.querySelector("#loginForm");
-loginForm.addEventListener("submit", async e => {
-    e.preventDefault();
-
-    const login = loginForm.querySelector("#login").value;
-    const password = loginForm.querySelector("#haslo").value;
-
-    if (login && password) {
-        await axiosAPI.post("/api/auth/login", {
-            login: login,
-            password: password
-        }).then((response) => {
-            const token = response.data.accessToken;
-            localStorage.setItem('accessToken', token);
-            alert('Zostałeś zalogownay');
-            window.location.replace('http://localhost:1234/index.html')  //TODO: przekierować na nową stronę główną z napisem wyloguj itd...
-
-        }).catch(error => {
-            console.error(error);
-            alert('Błąd logowania, spróbuj ponownie')
-        });
-        loginForm.reset();
-    }
-})
- */

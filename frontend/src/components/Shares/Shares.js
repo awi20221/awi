@@ -42,7 +42,7 @@ const SharesList = () => {
   const [shares, setShares] = useState([]);
   let [lastDate, setLastDate] = useState("2022-10-03"); //data najstarsza na sztyno - w razie błędu będzie zawsze działać
   //no chyba ze juz z bazy zostanie usuniete
-  const [dataChange, setDataChange] = useState("");
+  let [dataChange, setDataChange] = useState("");
   const [notFounderr, setNotFounderr] = useState("");
   const errRef = useRef();
 
@@ -83,8 +83,10 @@ const SharesList = () => {
         setShares(response.data.shares);
         if (!response.data.shares.length)
           setNotFounderr(
-            "Takiej daty nie ma w bazie danych lub została źle wpisana"
-          );
+            "Takiej daty nie ma w bazie danych lub została źle wpisana");
+        else{
+            setNotFounderr("");
+          }
       })
       .catch((error) => {
         console.log(error);
