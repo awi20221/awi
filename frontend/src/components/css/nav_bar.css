@@ -128,3 +128,11 @@ nav {
 .rotate .line3 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
+
+/*dla strony not found*/
+.NotFound{
+  color: rgb(122, 4, 4);
+  text-align: center;
+  margin-top: 40px;
+  font-size: 60px;
+}

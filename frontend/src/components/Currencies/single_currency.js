@@ -5,7 +5,7 @@ function Currency(props) {
     <tbody>
     <tr>
       <td>{props.c_name}</td>
-      <td>{props.c_name}</td>
+      <td>{props.code}</td>
       <td>{props.mid}</td>
       <td>{props.date}</td>
     </tr>
