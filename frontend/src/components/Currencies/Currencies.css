@@ -6,6 +6,7 @@
 
 :root {
   --main_green: rgba(22, 48, 43, 0.914);
+  --text_green:rgb(29, 65, 58);
 }
 
 nav {
@@ -37,22 +38,10 @@ nav {
   padding: 15px 15px;
   color: rgb(22, 48, 43);
   font-family: "Poppins", sans-serif;
-  margin: 10px auto 16vh;
-}
-
-.tabele table {
-  width: 100%;
+  margin: 10px auto 30px;
   border-collapse: collapse;
-  margin: 0 auto;
 }
 
-.tabele caption {
-  font-size: 24px;
-  padding-bottom: 10px;
-  color: rgb(22, 48, 43);
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
-}
 
 .tabele thead {
   height: 60px;
@@ -91,10 +80,28 @@ nav {
 }
 
 .Spacer{
-  height:10px;
+  height:40px;
 }
 
 .CurrenciesDate{
-  font-size: 16px;
-  font-weight: lighter;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text_green);
+}
+
+.CurrenciesTitle{
+  font-size: 28px;
+  font-weight: 600;
+  font-family:'Poppins', sans-serif;
+  margin-top: 10px;
+  color: var(--text_green);
+}
+
+.FilterInput{
+  color: var(--text_green);
+  margin-top: 0;
+}
+
+.SearchText{
+  border-bottom: none;
 }

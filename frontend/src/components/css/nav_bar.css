@@ -5,6 +5,7 @@ nav {
   align-items: center;
   min-height: 8vh;
   max-height: 8vh;
+  width: 100vw;
   font-family: "Poppins", sans-serif;
   z-index: 1;
   background: linear-gradient(90deg, #003100 10%, #000 98%);

@@ -10,6 +10,20 @@ import Help from "./components/Help/Help"
 import NotFound from "./mainComponents/NotFound";
 //import Nav from "./Navigation";
 import './App.css'
+import tw from "twin.macro";
+
+const TableContainer = tw.div`
+  w-full
+  max-w-full
+  flex
+  flex-col
+  items-center
+  justify-center
+  pl-10
+  pr-10
+  pb-32
+`;
+
 
 function App() {
   return (
@@ -17,7 +31,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<WelcomeText />} />
-        <Route path="/waluty" element={<CurrenciesList />} />
+        <Route path="/waluty" element={<TableContainer><CurrenciesList /></TableContainer>} />
         <Route path="/spolki" element={<SharesList />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
