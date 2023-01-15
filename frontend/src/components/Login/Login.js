@@ -20,14 +20,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
 
-  useEffect(() => {
-    const loggedInUser = window.localStorage.getItem("Logged in?");
+ /* useEffect(() => {
+    const loggedInUser = localStorage.getItem("Logged in?");
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
       console.log(foundUser.login, foundUser.password,foundUser.accessToken);
       setAuth(foundUser.login, foundUser.password,foundUser.accessToken);
     }
-  }, []);
+  }, []);*/
 
   useEffect(() => {
     setErrMsg("");
@@ -52,7 +52,8 @@ const Login = () => {
         setAuth({ login, password, accessToken });
         //setAuth(true);
         //console.log(JSON.stringify({login, password, accessToken}));
-        window.localStorage.setItem('Logged in?', JSON.stringify({login, password, accessToken }))
+        localStorage.setItem('Login', JSON.stringify(login))
+        localStorage.setItem('Password', JSON.stringify(password))
         setLogin('');
         setPassword('');
         navigate(from, { replace: true });

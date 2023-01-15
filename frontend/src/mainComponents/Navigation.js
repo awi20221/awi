@@ -33,13 +33,13 @@ const Nav = () => {
   return (
     <nav>
       <div className="logo">
-        <Link to="/">
+        <Link to="/home">
           <img src={logo} alt="Logo z napisem AWI" />
         </Link>
       </div>
       <ul className="nav-links" value={nav} ref={userRef}>
         <li value={navLinks} ref={userRef}>
-          <Link to="/">HOME</Link>
+          <Link to="/home">HOME</Link>
         </li>
         <li value={navLinks} ref={userRef}>
           <Link to="/spolki">SPÓŁKI</Link>

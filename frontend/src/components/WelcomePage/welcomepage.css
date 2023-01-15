@@ -6,11 +6,11 @@
   box-sizing: border-box;
 }
 
-.home-nav {
+.home-nav-welcomepage {
   background: black;
 }
 
-.container-home {  
+.container-welcomepage {  
   width: 100vw;
   height: 100vh;
   background-image: linear-gradient(rgb(0, 0, 0), rgba(15, 236, 195, 0.14)),
@@ -27,7 +27,7 @@ a:link {
 }
 
 /*TEKST*/
-#welcome-text {
+#welcome-text-welcomepage {
   width: 100%;
   min-height: 90vh;
   display: flex;
@@ -39,14 +39,14 @@ a:link {
 }
 
 /*header*/
-#welcome-text h1 {
+#welcome-text-welcomepage h1 {
   text-align: center;
   color: rgb(255, 255, 255);
   font-size: 45px;
 }
 
 /*dalszy tekst*/
-#welcome-text p {
+#welcome-text-welcomepage p {
   padding: 10px 25px;
   text-decoration: none;
   font-size: 15px;

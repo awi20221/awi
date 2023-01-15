@@ -32,14 +32,14 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* publiczne szieżki */}
-        <Route path="welcomepage" element={<WelcomePage />} />
+        <Route path="/" element={<WelcomePage />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="help" element={<Help />} />
 
         {/* chronione ścieżki - wystarczy przeniesc powyzej jk nie chcecie sie logowac */}
         <Route element={<RequireAuth />}>
-          <Route path="/" element={<Home />} />
+          <Route path="home" element={<Home />} />
           <Route path="waluty" element={<TableContainer><CurrenciesList /></TableContainer>}/>
           <Route path="spolki" element={<TableContainer><SharesList /></TableContainer>}/>
           <Route path="kalkulator" element={<Calculator />} />

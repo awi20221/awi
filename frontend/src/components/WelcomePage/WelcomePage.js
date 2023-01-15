@@ -6,8 +6,8 @@ import logo from "../css/images/logo.png";
 
 function WelcomePage(props) {
   return (
-    <div className="container-home">
-      <nav className="home-nav">
+    <div className="container-welcomepage">
+      <nav className="home-nav-welcomepage">
         <div className="logo">
           <Link to="/">
             <img src={logo} alt="Logo z napisem AWI" />
@@ -15,7 +15,7 @@ function WelcomePage(props) {
         </div>
         <ul className="nav-links">
           <li>
-            <Link to="/">HOME</Link>
+            <Link to="/home">HOME</Link>
           </li>
           <li>
             <Link to="/spolki">SPÓŁKI</Link>
@@ -36,7 +36,7 @@ function WelcomePage(props) {
           <div className="line3"></div>
         </div>
       </nav>
-      <div id="welcome-text">
+      <div id="welcome-text-welcomepage">
         <h1>
           Aplikacja
           <br />

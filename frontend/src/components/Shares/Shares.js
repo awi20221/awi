@@ -58,6 +58,7 @@ const SharesList = () => {
     setNotFounderr("");
   }, [dataChange]);
 
+
   async function fetchLastDate() {
     let url = "http://localhost:3001/api/shares/update-time";
     await axios
@@ -83,10 +84,11 @@ const SharesList = () => {
         setShares(response.data.shares);
         if (!response.data.shares.length)
           setNotFounderr(
-            "Takiej daty nie ma w bazie danych lub została źle wpisana");
-        else{
-            setNotFounderr("");
-          }
+            "Takiej daty nie ma w bazie danych lub została źle wpisana"
+          );
+        else {
+          setNotFounderr("");
+        }
       })
       .catch((error) => {
         console.log(error);

@@ -1,23 +1,62 @@
-import { useNavigate} from "react-router-dom";
-import { useContext } from "react";
-import AuthContext from "../../context/AuthProvider";
+import { Link } from "react-router-dom";
+import "./home.css";
+import logo from "../css/images/logo.png";
+import Footer from "../../mainComponents/Footer";
 
 const Home = () => {
-    const { setAuth } = useContext(AuthContext);
-    const navigate = useNavigate();
+  return (
+    <div className="container-home">
+      <div id="welcome-text">
+        <div className="logo-home">
+          <img src={logo} alt="Logo z napisem AWI" />
+        </div>
+        <h1>
+          Co chcesz
+          <br />
+          zrobić?
+        </h1>
+        <p>Wybierz jedna z opcji</p>
 
-    const logout = async () => {
-        // if used in more components, this should be in context 
-        // axios to /logout endpoint 
-        setAuth({});
-        navigate('/welcomepage');
-    }
+        <nav className="home-nav">
+          <ul className="nav-links-home">
+            <div className="content1">
+              <div className="homeLink">
+                <Link to="/spolki">
+                  Zobacz&nbsp;aktualne
+                  <br />
+                  notowania&nbsp;spółek
+                </Link>
+              </div>
+              <div className="homeLink">
+                <Link to="/kalkulator">
+                  Przejdź&nbsp;do
+                  <br />
+                  strony&nbsp;kalkulatora
+                </Link>
+              </div>
+            </div>
+            <div className="content2">
+              <div className="homeLink">
+                <Link to="/waluty">
+                  Zobacz&nbsp;aktualne
+                  <br />
+                  kursy&nbsp;walut
+                </Link>
+              </div>
+              <div className="homeLink">
+                <Link to="/help">
+                  Potrzebujesz
+                  <br />
+                  pomocy?
+                </Link>
+              </div>
+            </div>
+          </ul>
+        </nav>
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
-    return (
-        <section>
-            <button onClick={logout}>Wyloguj sie</button>
-        </section>
-    )
-}
-
-export default Home
+export default Home;

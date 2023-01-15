@@ -1,0 +1,115 @@
+@import "../css/nav_bar.css";
+
+* {
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.home-nav {
+  background: none;
+  height: 100px;
+  width: 60%;
+  min-height: 40vh;
+  max-height: 40vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-links-home a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 19px 25px;
+  transition: background-color 0.4s;
+}
+.nav-links-home {
+  display: flex;
+  justify-content: center;
+  width: 45%;
+}
+
+.homeLink {
+  padding: 20px;
+  margin: 20px;
+  border: solid 5px rgb(255, 255, 255);
+  border-radius: 7px;
+  box-shadow: 0px 0px 20px 0 rgba(255, 255, 255, 0.608);
+  background: rgba(2, 2, 2, 0.053);
+  transition: all 0.4s;
+}
+.content1 {
+  margin-bottom: 5px;
+}
+.content2 {
+  margin-bottom: 5px;
+}
+.homeLink:hover {
+  background-color: rgba(255, 255, 255, 0.563);
+  color: black;
+  padding: 24px;
+}
+.nav-links-home a:hover {
+  background-color: rgba(240, 248, 255, 0);
+  color: black;
+}
+
+.logo-home img {
+  width: 200px;
+  text-decoration: none;
+  float: left;
+  padding-left: 5%;
+  padding-top: 2%;
+  transition: opacity 0.4s;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.container-home {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(rgb(0, 0, 0), rgba(15, 236, 195, 0.14)),
+    url("../css/images/homePagebd.jpg");
+  background-color: #cccccc;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  height: 100vh;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+/*TEKST*/
+#welcome-text {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/*header*/
+#welcome-text h1 {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 45px;
+}
+
+/*dalszy tekst*/
+#welcome-text p {
+  padding: 10px 25px;
+  text-decoration: none;
+  font-size: 19px;
+  display: inline-block;
+  color: #ebebebfc;
+  margin: 5px;
+}
+
+/*przyciski logowaniea i rejestracji*/
