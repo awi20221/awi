@@ -30,11 +30,6 @@ function WelcomePage(props) {
             <Link to="/help">HELP</Link>
           </li>
         </ul>
-        <div className="burger">
-          <div className="line1"></div>
-          <div className="line2"></div>
-          <div className="line3"></div>
-        </div>
       </nav>
       <div id="welcome-text-welcomepage">
         <h1>

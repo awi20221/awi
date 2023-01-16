@@ -60,6 +60,7 @@ nav {
   cursor: pointer;
 }
 
+
 .burger div {
   width: 25px;
   height: 3px;
@@ -77,31 +78,18 @@ nav {
 
 /*dla responsywnosci*/
 @media screen and (max-width: 868px) {
-  body {
-    overflow-x: hidden;
-  } /*boczny wysuwany panel*/
-  .nav-links {
-    position: absolute;
-    right: 0px;
-    width: 45%;
-    height: 92vh;
-    top: 8vh;
-    background: linear-gradient(rgba(232, 6, 6, 0.03), rgb(0, 0, 0));
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transform: translateX(100%);
-    transition: transform 0.5s ease-in;
-  }
-  .nav-links li {
-    opacity: 0;
-  }
-  .nav-links li a {
-    display: block;
-    color: rgb(255, 255, 255);
-  }
+
   .burger {
     display: block;
+    position: absolute;
+    right: 18%;
+  }
+  .logo {
+    position: absolute;
+    left: 18%;
+  }
+  .nav-links{
+    display:none;
   }
 }
 
@@ -121,17 +109,6 @@ nav {
   }
 }
 
-.rotate .line1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.rotate .line2 {
-  opacity: 0;
-}
-
-.rotate .line3 {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
 
 /*dla strony not found*/
 .NotFound{
@@ -140,3 +117,47 @@ nav {
   margin-top: 40px;
   font-size: 60px;
 }
+
+/*boczny wysuwany panel*/
+.dropdown{
+  overflow: hidden;
+}
+
+.nav-links-dropdown {
+    position:absolute;
+    display: flex;
+    right:40vw;
+    width: 40vw;
+    height: 40vh;
+    top: 8vh;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    background: rgba(20, 43, 38, 0.936);
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.9s ease-out;
+  }
+  .nav-links-dropdown li {
+    list-style: none;
+  }
+  .nav-links-dropdown li a {
+    display: block;
+    color: rgb(255, 255, 255);
+  }
+
+  .nav-links-dropdown a:hover {
+    background-color: rgba(240, 248, 255, 0.889);
+    color: black;
+  }
+
+  .nav-links-dropdown a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 17px;
+    padding: 12px 12px;
+    border-radius: 7px;
+    transition: background-color 0.4s;
+  }

@@ -1,34 +1,35 @@
 import React from "react";
-import { useRef, useState} from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../components/css/nav_bar.css";
 import logo from "../components/css/images/logo.png";
 
 const Nav = () => {
-  const userRef = useRef();
-  const burger = useState("");
-  const nav = useState("");
-  const navLinks = useState("");
+  const [burger, setBurger] = useState(false);
 
-  const NavSlider = () => {
-    burger("click", () => {
-      nav.classList.toggle("nav-active"); //wysuwanie sie menu bocznego
-      console.log("hej");
-      //animacja dla el menu
-      navLinks.forEach((link, index) => {
-        if (link.style.animation) {
-          link.style.animation = "";
-        } else {
-          link.style.animation = `navLinkFade 0.5s ease forwards ${
-            index / 5 + 0.8
-          }s`;
-        }
-      });
-
-      //animacja burgera
-      burger.classList.toggle("rotate");
-    });
-  };
+  function DropdownMenu() {
+    return (
+      <div className="dropdown">
+        <ul className="nav-links-dropdown">
+          <li>
+            <Link to="/home">HOME</Link>
+          </li>
+          <li>
+            <Link to="/spolki">SPÓŁKI</Link>
+          </li>
+          <li>
+            <Link to="/kalkulator">KALKULATOR</Link>
+          </li>
+          <li>
+            <Link to="/waluty">KURSY&nbsp;WALUT</Link>
+          </li>
+          <li>
+            <Link to="/help">HELP</Link>
+          </li>
+        </ul>
+      </div>
+    );
+  }
 
   return (
     <nav>
@@ -37,28 +38,29 @@ const Nav = () => {
           <img src={logo} alt="Logo z napisem AWI" />
         </Link>
       </div>
-      <ul className="nav-links" value={nav} ref={userRef}>
-        <li value={navLinks} ref={userRef}>
+      <ul className="nav-links">
+        <li>
           <Link to="/home">HOME</Link>
         </li>
-        <li value={navLinks} ref={userRef}>
+        <li>
           <Link to="/spolki">SPÓŁKI</Link>
         </li>
-        <li value={navLinks} ref={userRef}>
+        <li>
           <Link to="/kalkulator">KALKULATOR</Link>
         </li>
-        <li value={navLinks} ref={userRef}>
+        <li>
           <Link to="/waluty">KURSY&nbsp;WALUT</Link>
         </li>
-        <li value={navLinks} ref={userRef}>
+        <li>
           <Link to="/help">HELP</Link>
         </li>
       </ul>
-      <div className="burger" onClick={NavSlider}  ref={userRef} >
+      <div className="burger" onClick={() => setBurger(!burger)}>
         <div className="line1"></div>
         <div className="line2"></div>
         <div className="line3"></div>
       </div>
+      {burger && DropdownMenu()}
     </nav>
   );
 };

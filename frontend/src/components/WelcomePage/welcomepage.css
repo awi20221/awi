@@ -1,11 +1,5 @@
 @import "../css/nav_bar.css";
 
-*{
-  margin: 0;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
 .home-nav-welcomepage {
   background: black;
 }

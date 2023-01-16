@@ -36,13 +36,13 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="help" element={<Help />} />
-
+        <Route path="kalkulator" element={<Calculator />} />
         {/* chronione ścieżki - wystarczy przeniesc powyzej jk nie chcecie sie logowac */}
         <Route element={<RequireAuth />}>
           <Route path="home" element={<Home />} />
           <Route path="waluty" element={<TableContainer><CurrenciesList /></TableContainer>}/>
           <Route path="spolki" element={<TableContainer><SharesList /></TableContainer>}/>
-          <Route path="kalkulator" element={<Calculator />} />
+          
         </Route>
 
         {/* catch all */}
