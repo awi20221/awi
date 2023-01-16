@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+.container-graphs {
+  display: flex;
+  background: rgba(15, 236, 195, 0.838);
+  background-image: linear-gradient(rgb(0, 0, 0), rgba(15, 236, 195, 0.14)),
+    url("../images/homePagebd.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo-graph img {
+  min-width: 150px;
+  width: 150px;
+  top: 5vh;
+  left: 5vw;
+  text-decoration: none;
+  position: absolute;
+}
+
+.logo-graphs img:hover {
+  opacity: 60%;
+}
+
+.form-graph {
+  background: rgba(255, 255, 255, 0.247);
+  box-shadow: 0px 0px 30px 0 rgba(255, 255, 255, 0.663);
+  max-width: 90vw;
+  max-height: 50vh;
+  width: 50vw;
+  height: 37vh;
+  border-radius: 25px;
+  padding: 24px 34px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.select-graph {
+  background: rgba(255, 255, 255, 0.405);
+  box-shadow: 0px 0px 10px 0 rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: rgb(21, 52, 46);
+  font-size:medium;
+  transition: box-shadow 0.3s, outline 0.3s;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+
+.graph-text {
+  color: rgb(255, 255, 255);
+  opacity: 1;
+  cursor: text;
+  font-weight: bold;
+  margin-bottom: 7px;
+  margin-top: 7px;
+}
+
+.select-graph {
+  box-shadow: 0px 0px 20px 0 rgba(255, 255, 255, 0.407);
+}
+
+.select-graph:focus {
+  outline: solid 3px rgba(255, 255, 255, 0.648);
+}
+
+
+.graphs-box{
+    display: flex;
+    justify-content: center;
+    width: 90%; 
+    height: 50vh;
+}
+

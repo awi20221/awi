@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import "./accountOptions.css"
 import axios from "../../axios/axios";
 import Nav from "../../mainComponents/Navigation";
 import jwtDecode from "jwt-decode"
+import  userIcon from "../css/images/user_icon.png";
+
+const login=localStorage.getItem("userLogin");
 
 //zwraca tablice , gdzie 1 el to true lub false w zależności od tego czy token jest dalej aktywny, 2 el to id uzytkownika
 function decodeTokenAndCheckValidity(accessToken) {
@@ -17,6 +20,7 @@ function decodeTokenAndCheckValidity(accessToken) {
         return [true, userID];
     }
 }
+
 
 // function getUserName(accessToken) {
 //     const decoded = jwtDecode(accessToken);
@@ -142,8 +146,10 @@ class AccountOptions extends React.Component {
 
     render () {
         return (
+            <>
+            <Nav/>
             <div className="account-options">
-                <Nav/>
+                
                 <div className="result">
                     {this.state.showFailMessage &&
                         <section className="change-fail">
@@ -162,10 +168,9 @@ class AccountOptions extends React.Component {
                     }
                 </div>
                 <div className="user-logo-header">
-                    <img id="user-icon"
-                         src="https://cdn.benchmark.pl/thumbs/uploads/article/72855/MODERNICON/4f91fb01300b74ba42dcf080665285f3f56bd4ff.jpg/320x0x1.jpg" alt="Logo z napisem AWI"/>
-                    <h1 id="user-name">{}</h1>
+                    <img src={userIcon} className="user-icon" id="user-icon" alt="User icon" />
                     <h1 id="user-note">Your personal account</h1>
+                    <h3 id="user-name">"{login}"</h3>
                 </div>
                 <div className="change-email-header">
                     <h1 id="change-email">Zmień adres e-mail</h1>
@@ -180,7 +185,8 @@ class AccountOptions extends React.Component {
                 </div>
                 <br/>
                 <form>
-                    <input required placeholder="Wpisz nowe hasło" id="input-change-password" value={this.state.newPassword} onChange={this.handleChangeNewPassword}></input>
+                    <input required placeholder="Wpisz nowe hasło" id="input-change-password" value={this.state.newPassword} onChange={this.handleChangeNewPassword}
+                    autoComplete="off"></input>
                     <button id="button-change-password" onClick={this.handleSubmitNewPassword}>Zmień hasło</button>
                 </form>
                 <div className="delete-user-header">
@@ -191,6 +197,7 @@ class AccountOptions extends React.Component {
                         <button id="button-delete-user" onClick={this.handleSubmitDeleteUser}>Usuń konto</button>
                 </form>
             </div>
+            </>
         );
     }
 }

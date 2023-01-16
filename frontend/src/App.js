@@ -11,8 +11,10 @@ import NotFound from "./mainComponents/NotFound";
 import Layout from "./components/Layout";
 import RequireAuth from './components/RequireAuth';
 import Home from "./components/Home/Home";
+import AccountOptions from "./components/AccountOptions/AccountOptions";
 import "./App.css";
 import tw from "twin.macro";
+
 
 const TableContainer = tw.div`
   w-full
@@ -43,6 +45,7 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="waluty" element={<TableContainer><CurrenciesList /></TableContainer>}/>
           <Route path="spolki" element={<TableContainer><SharesList /></TableContainer>}/>
+          <Route path="settings" element={<AccountOptions />}/>
           
         </Route>
 

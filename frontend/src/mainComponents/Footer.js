@@ -4,7 +4,7 @@ import { useContext} from "react";
 import AuthContext from "../context/AuthProvider";
 import "../components/css/footer.css";
 import log_out from "../components/css/images/logout_icon.png";
-import log_in from "../components/css/images/log_in.png";
+import settings from "../components/css/images/settings_icon.png";
 
 function Footer(props) {
 
@@ -19,6 +19,10 @@ function Footer(props) {
     localStorage.clear()
     navigate("/");
   };
+  const navigate_to = async () => {
+    navigate("/settings");
+  };
+
 
 
   return (
@@ -28,14 +32,9 @@ function Footer(props) {
           <p>Wyloguj</p>
       </div>
 
-      <div className="footer-login">
-        <img src={log_in} alt="Ikona zaloguj sie" />
-        <p className="footer-log">
-          <Link to="/login" className="link-1">
-            zaloguj się
-          </Link>
-          <Link to="/register">załóż konto</Link>
-        </p>
+      <div className="footer-settings">
+          <img src={settings} alt="Wyloguj sie" onClick={navigate_to} />
+          <p>Settings</p>
       </div>
 
       <div className="footer-content">

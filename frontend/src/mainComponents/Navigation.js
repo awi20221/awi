@@ -46,7 +46,7 @@ const Nav = () => {
           <Link to="/spolki">SPÓŁKI</Link>
         </li>
         <li>
-         <a href="http://localhost:3000/graphs/wykres_html.html">WALUTY</a> 
+         <a href="http://localhost:3000/graphs/wykres_html.html">WYKRESY</a> 
         </li>
         <li>
           <Link to="/waluty">KURSY&nbsp;WALUT</Link>

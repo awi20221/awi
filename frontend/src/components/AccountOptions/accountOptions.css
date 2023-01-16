@@ -14,6 +14,24 @@
     margin: 10px;
 }
 
+.account-options{
+    position: absolute;
+    left:7.5vw;
+    margin: 2px auto 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    width: 85vw;
+    height: 87vh;
+    /*border: solid 2px hsla(210,18%,87%,1);*/
+    border-radius: 7px;
+    background: linear-gradient(to right bottom, rgba(220, 220, 220, 0.236), rgb(255, 255, 255));
+    margin-top: 3vh;
+    box-shadow: 4px 4px 15px 0 rgba(0, 0, 0, 0.897);
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
 .HomeLink{
     color:rgb(255, 255, 255) ;
     text-decoration: none;
@@ -33,21 +51,21 @@
 }
 
 .user-logo-header {
+    margin: 0 auto 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
+
 #user-icon{
-    width:150px;
-    height: 150px;
+    width:80px;
+    height: 80px;
     border-radius: 50%;
-    background-color: #50edbb;
     float: left;
-    margin-left: 50px;
-    margin-top: 50px;
-
-
+    margin: 0 auto 7px;
+    border: 4px solid rgb(0, 0, 0);
+    opacity: 1;
 }
 
 /*#user-name{*/
@@ -61,97 +79,56 @@
 
 #user-note {
     float: left;
-    margin-left: 20px;
     text-align: left;
-    margin-top: 50px;
-
 }
 
-
+.delete-user-header,
+.change-password-header,
 .change-email-header {
     display: flex;
     justify-content: center;
     /*align-items: center;*/
-    margin-left: -700px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
+#delete-user-text,
+#change-password,
 #change-email {
     position: relative;
     font-weight: normal;
+    font-size:28px;
 }
 
+#delete-user-text::after,
+#change-password::after,
 #change-email::after {
     content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 350%;
-    border-bottom: 2px solid;
-    color: hsla(210,18%,87%,1);
-}
-
-#input-change-email {
-    width:25%;
-    color: black;
-}
-
-#button-change-email {
-    margin-left: 50px;
-}
-
-.change-password-header {
     display: flex;
-    justify-content: center;
-    margin-left: -800px;
-    margin-top: 50px;
-}
-
-#change-password {
-    position: relative;
-    font-weight: normal;
-}
-
-#change-password::after {
-    content: "";
-    position: absolute;
-    left: 0;
     bottom: -5px;
-    width: 550%;
+    width: 75vw;
     border-bottom: 2px solid;
     color: hsla(210,18%,87%,1);
 }
 
-#input-change-password {
-    width:25%;
+
+#input-change-email,
+#input-change-password{
+    width: 35%;
     color: black;
+    box-shadow: 4px 2px 10px 0 rgba(28, 74, 60, 0.897);
 }
 
+#input-change-password:hover,
+#input-change-email:hover{
+    border: solid 2px rgba(145, 145, 145, 0.7);
+}
+
+#button-change-email,
 #button-change-password {
-    margin-left: 50px;
+    margin-left: 9%;
+    box-shadow: 3px 2px 10px 0 rgba(28, 74, 60, 0.897);
 }
 
-.delete-user-header {
-    display: flex;
-    justify-content: center;
-    margin-left: -800px;
-    margin-top: 50px;
-}
-
-#delete-user-text {
-    position: relative;
-    font-weight: normal;
-}
-
-#delete-user-text::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 580%;
-    border-bottom: 2px solid;
-    color: hsla(210,18%,87%,1);
-}
 
 
 #button-delete-user {
@@ -159,7 +136,8 @@
     border-color: rgba(27, 31, 36, 0.15);
     color: #cf222e;
     /*margin-left: 280px;*/
-    font-weight: 500;
+    font-weight: 700;
+    box-shadow: 0px 0px 10px 0 rgba(255, 0, 0, 0.712);
 }
 
 #button-delete-user:hover {
