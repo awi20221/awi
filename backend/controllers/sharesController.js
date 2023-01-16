@@ -65,25 +65,18 @@ async function findOneCompany(req, res, next) {
   return res.status(200).send({ share: share });
 }
 
-async function findAll(req, res) {
-  const shares = await sharesModel.find().catch((error) => {
-    if (error) console.log("Cannot fetch currencies ", error);
-  });
-  return res.status(200).send({ shares: shares });
-}
-/*   //ZMIANA TYMCZASOWA!
 async function findAll(req, res, next) {
     if(await authController.verifyIfAdmin(req,res,next)) {
         const shares = await sharesModel.find()
             .catch(error => {
                 if (error)
-                    console.log("Cannot fetch currencies ", error)
+                    return res.status(400).send("Cannot fetch currencies ", error)
             })
         return res.status(200).send({shares: shares});
     }
-    return res.status(200).send("Available for admin only");
+    return res.status(401).send("Available for admin only");
 }
-*/
+
 async function findAllByDay(req, res, next) {
   const shares = await sharesModel
     .find({ effectiveDate: req.params.effectiveDate })
@@ -132,7 +125,7 @@ async function update(req, res, next) {
                 return res.status(200).send('Database updated');
             })
   }
-  return res.status(200).send("Available for admin only");
+  return res.status(401).send("Available for admin only");
 }
 
 module.exports = {findAll, findAllByDay, findOneByDay, findOneCompany, getUpdateDate, update};

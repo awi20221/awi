@@ -7,7 +7,7 @@ function apiShares() {
     const api = express.Router();
 
     // GET api/shares/  (admin only risky operation)
-    api.get('/',catchAsync(sharesController.findAll)) //,jwtAuth.auth //TYMCZASOWA ZMIANA!
+    api.get('/', jwtAuth.auth ,catchAsync(sharesController.findAll))
 
     // GET api/shares/name/:name
     api.get('/name/:name', catchAsync(sharesController.findOneCompany))
@@ -26,8 +26,7 @@ function apiShares() {
     // PATH - needed to be specified as absolute path
     // As variable in reqest named as : filePath
 
-    // jwtAuth.auth
-    api.get('/update-shares' ,catchAsync(sharesController.update))
+    api.get('/update-shares', jwtAuth.auth ,catchAsync(sharesController.update))
 
     return api;
 }

@@ -9,12 +9,12 @@ function apiCurrencies() {
     const api = express.Router();
 
     // GET api/currencies/  (only admin)
-    api.get('/',catchAsync(currenciesController.findAll)) //<- , jwtAuth.auth //ZMIANA TYMCZASOWA!
+    api.get('/', jwtAuth.auth ,catchAsync(currenciesController.findAll))
 
-    // GET api/currencies/:code
+    // GET api/currencies/code/:code
     api.get('/code/:code',catchAsync(currenciesController.findOne))
 
-    // GET api/currencies/:effectiveDate{YYYY-MM-DD}
+    // GET api/currencies/effectiveDate/:effectiveDate{YYYY-MM-DD}
     api.get('/effectiveDate/:effectiveDate' ,catchAsync(currenciesController.findAllByDay))
 
     // GET api/currencies/:effectiveDate{YYYY-MM-DD}/:code

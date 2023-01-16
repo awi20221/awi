@@ -1,6 +1,7 @@
 const {tTransporter} = require('../config/tmail')
 const User = require('../models/user').userModel
 const config = require('../config/config')
+const authController = require('./authController')
 
 async function setLaunchMailOptions(registeredEmail, login) {
     let url = config.configValues.serverURL + '/api/auth/activate-account/' + login
@@ -84,15 +85,15 @@ async function sendLaunchTServerMail(registeredEmail, login) {
  * Enables to send any mail by administrator to any user with using axios
  */
 async function sendTMail(req,res,next) {
-    // if(await authController.verifyIfAdmin(req,res,next)) {
+    if(await authController.verifyIfAdmin(req,res,next)) {
         await tTransporter.sendMail(await setAdminMailOptions(req.body.userNames, req.body.subject, req.body.text), (err) => {
             if (err) {
-                return res.status(200).send('Cannot sendTMail ', err);
+                return res.status(400).send('Cannot sendTMail ', err);
             }
             return res.status(200).send('Wiadomość została wysłana');
         })
-    // }
-    // return res.status(200).send("Available for admin only");
+    }
+    return res.status(401).send("Available for admin only");
 }
 
 /**

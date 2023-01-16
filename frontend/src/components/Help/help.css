@@ -86,6 +86,8 @@
     font-family:'Montserrat',sans-serif;
     transition:all .3s;
     border-bottom:2px solid #bebed2;
+    overflow-wrap: break-word;
+
 }
 
 

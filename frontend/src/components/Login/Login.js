@@ -45,15 +45,11 @@ const Login = () => {
           login: login,
           password: password
     });
-        //console.log(JSON.stringify(response?.data));
         const accessToken = response?.data?.accessToken;
-        //const roles = response?.data?.roles;
-        //console.log(roles);
+        localStorage.setItem('accessToken', accessToken);
+
         setAuth({ login, password, accessToken });
-        //setAuth(true);
-        //console.log(JSON.stringify({login, password, accessToken}));
-        localStorage.setItem('Login', JSON.stringify(login))
-        localStorage.setItem('Password', JSON.stringify(password))
+
         setLogin('');
         setPassword('');
         navigate(from, { replace: true });

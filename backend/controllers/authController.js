@@ -68,7 +68,6 @@ async function login (req, res, next) {
 }
 
 
-    //TODO: dodać potwierdzenie adresu email
     async function register(req, res, next) {
         const { fullName, login, email, password, role } = req.body;
         //check e-mail and login availability
@@ -77,12 +76,12 @@ async function login (req, res, next) {
                 const user = new User({ fullName: fullName, login: login, email: email, role: role });
                 await User.register(user, password);
                 await mailController.sendLaunchTServerMail(email, login)
-                res.send('User created successfully, please click the activation link on your mail');
+                res.status(200).send('User created successfully, please click the activation link on your mail');
                 return;
             }
-            return res.status(409);
+            return res.status(410).send('Login not available');
         }
-        return res.status(409);
+        return res.status(411).send('Email not available')
     }
 
 async function activateAccount(req,res,next) {

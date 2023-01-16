@@ -76,12 +76,15 @@ const Register = () => {
           console.error(error);
           if (!error?.response) {
             setErrMsg("No Server Response");
-          } else if (error.response?.status === 409) {
-            setErrMsg("Username Taken");
+          } else if (error.response?.status === 410) {
+            setErrMsg("Login taken");
+          }
+          else if (error.response?.status === 411) {
+              setErrMsg("Email taken");
           } else {
             setErrMsg("Registration Failed");
           }
-        });
+        })
     } else {
       setErrMsg("Registration Failed");
     }
