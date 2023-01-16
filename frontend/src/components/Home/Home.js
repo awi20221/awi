@@ -28,11 +28,11 @@ const Home = () => {
                 </Link>
               </div>
               <div className="homeLink">
-                <Link to="/kalkulator">
+                <a href="http://localhost:3000/graphs/wykres_html.html">
                   Przejdź&nbsp;do
                   <br />
-                  strony&nbsp;kalkulatora
-                </Link>
+                  strony&nbsp;z&nbsp;wykresami
+                </a>
               </div>
             </div>
             <div className="content2">

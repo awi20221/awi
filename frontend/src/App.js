@@ -37,6 +37,7 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="help" element={<Help />} />
         <Route path="kalkulator" element={<Calculator />} />
+        
         {/* chronione ścieżki - wystarczy przeniesc powyzej jk nie chcecie sie logowac */}
         <Route element={<RequireAuth />}>
           <Route path="home" element={<Home />} />
