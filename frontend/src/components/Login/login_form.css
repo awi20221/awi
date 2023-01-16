@@ -1,4 +1,3 @@
-
 .container-login {
   display: flex;
   background: rgba(15, 236, 195, 0.838);
@@ -13,7 +12,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .logo-login img {
   min-width: 100px;
@@ -36,6 +34,7 @@
   border-radius: 25px;
   padding: 36px 54px;
   text-align: center;
+  backdrop-filter: blur(8px);
 }
 
 .form-row {
@@ -176,21 +175,20 @@ button:hover:after {
   color: #ebebebfc;
 }
 
-.register-icon img{
+.register-icon img {
   height: 70px;
   width: 110px;
-  object-fit:cover;
+  object-fit: cover;
   opacity: 0.6;
-  margin-bottom: 10px ;
+  margin-bottom: 10px;
 }
-
 
 .LogSucces {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   background: rgba(255, 255, 255, 0.247);
   box-shadow: 0px 0px 20px 0 rgba(255, 255, 255, 0.307);
   max-width: 350px;
@@ -201,20 +199,76 @@ button:hover:after {
   margin: 10px;
 }
 
-.HomeLink{
-      color:rgb(255, 255, 255) ;
-      text-decoration: none;
-      transition: background-color 0.3s;
-      font-size: 20px;
-      border:rgb(255, 255, 255) solid 2px;
-      border-radius: 7px;
-      padding:6px;
-      font-weight:bold;
-  }
+.HomeLink {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  transition: background-color 0.3s;
+  font-size: 20px;
+  border: rgb(255, 255, 255) solid 2px;
+  border-radius: 7px;
+  padding: 6px;
+  font-weight: bold;
+}
 
-.HomeLink:hover{
-      background-color: rgb(22, 48, 43);
-  }
-.LogSuccesText{
+.HomeLink:hover {
+  background-color: rgb(22, 48, 43);
+}
+.LogSuccesText {
   margin-bottom: 20px;
 }
+
+.bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.dot{
+  background: linear-gradient(rgba(255, 255, 255, 0.104), rgba(15, 236, 195, 0.186));
+  border-radius: 50%;
+  width:20vh;
+  height:20vh;
+  opacity: 0.8;
+  filter: blur(20px);
+}
+
+.dot:nth-child(1){
+  animation: move1 13s infinite linear;
+  height: 50vh;
+  width: 50vh;
+  position: absolute;
+  left:20%;
+  top:3%;
+}
+
+.dot:nth-child(2){
+  animation: move2 10s infinite linear;
+  height: 30vh;
+  width: 30vh;
+  right:30%;
+  bottom:2%;
+  position: absolute;
+}
+
+
+@keyframes move1{
+  from {
+    transform: translateY(-50vh);
+  }
+  to{
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes move2{
+  from {
+    transform: translateY(50vh);
+  }
+  to{
+    transform: translateY(-90vh);
+  }
+}
+

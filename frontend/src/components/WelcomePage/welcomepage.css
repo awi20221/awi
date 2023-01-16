@@ -30,6 +30,7 @@ a:link {
   align-items: center;
   text-align: center;
   font-family: "Poppins", sans-serif;
+  backdrop-filter: blur(1px);
 }
 
 /*header*/

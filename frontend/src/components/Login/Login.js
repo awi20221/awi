@@ -81,6 +81,10 @@ const Login = () => {
   return (
     <div className="container-login">
         <>
+        <div className="bg">
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
           <div className="logo-login">
             <Link to="/">
               <img src={logo} alt="Logo z napisem AWI" />
