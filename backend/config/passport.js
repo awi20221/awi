@@ -9,11 +9,7 @@ const ExtractJWT = passportJWT.ExtractJwt;  //funkcja ekstraktująca token z req
 function verifyCallback(payload, done) {
     return User.findOne({_id: payload.id})
         .then(user => {
-            if(user[0].active) {
-                return done(null, user);
-            } else {
-                return done(null, false, {message: 'Non-activated account'})
-            }
+            return done(null,user)
         })
         .catch(err => {
             return done(err);

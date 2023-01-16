@@ -43,7 +43,7 @@ async function fetchPastCurrenciesTables(){
         for (const el of res.data) {
             const answer = await currencyUpdateTimeModel.find({effectiveDate: el.effectiveDate});
             if(answer[0] !== undefined){
-                return;
+                continue;
             }
             else {
                 const newCurrencyUpdateTime = new currencyUpdateTimeModel({effectiveDate: el.effectiveDate})
@@ -150,16 +150,7 @@ async function findOne(req, res, next) {
 /**
  * Funkcja dostępna jedynie dla admin'a (duża ilość przesyłanych danych może wyrzucić błąd
  */
-//ZMIANA TYMCZASOWA!
-async function findAll(req, res) {
-    const currencies = await currencyModel.find()
-        .catch(error => {
-            if (error)
-                console.log("Cannot fetch currencies ", error)
-        })
-    return res.status(200).send({ currencies: currencies });
-}
-/*
+
 async function findAll(req, res, next) {
     if(await authController.verifyIfAdmin(req,res,next)) {
         const currencies = await currencyModel.find()
@@ -169,9 +160,9 @@ async function findAll(req, res, next) {
             })
         return res.status(200).send({currencies: currencies});
     }
-    return res.status(200).send("Available for admin only");
+    return res.status(401).send("Available for admin only");
 
-}*/
+}
 
 async function findAllByDay(req, res, next) {
     const currencies = await currencyModel.find({effectiveDate: req.params.effectiveDate})
@@ -219,7 +210,7 @@ async function update(req, res, next) {
                 return res.status(200).send('Database updated');
             })
     }
-    return res.status(200).send("Available for admin only");
+    return res.status(401).send("Available for admin only");
 }
 
 async function fetchOldData(req, res, next) {
@@ -234,8 +225,9 @@ async function fetchOldData(req, res, next) {
             .then(() => {
                 return res.status(200).send('Past currencies tables fetched successfully');
             })
+    } else {
+        return res.status(401).send("Available for admin only");
     }
-    return res.status(200).send("Available for admin only");
 }
 
 

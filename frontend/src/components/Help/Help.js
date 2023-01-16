@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
 import axios from "axios"
-import Footer from "../../mainComponents/Footer";
 import Nav from "../../mainComponents/Navigation";
 import "./help.css";
 
@@ -42,7 +41,7 @@ class contactFormulae extends React.Component {
                 })
                 .catch(error => {
                     if(error.status === 401){
-
+                        console.log(error);
                     }
                 })
             event.preventDefault();
@@ -51,7 +50,6 @@ class contactFormulae extends React.Component {
     render() {
         return (
             <div className="container-formulae">
-                {/*{success ? () : ()}*/}
                 <Nav />
                     <form id="form-help" onSubmit={this.handleSubmit}>
                         <div className="formulae-start">
