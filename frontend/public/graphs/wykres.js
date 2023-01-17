@@ -1,3 +1,6 @@
+//z dodanym czasem
+
+
 var a = [50], b = [50];
 
 var subjectObject = {
@@ -60,15 +63,12 @@ var subjectObject = {
   }
 }
 
-//wczytać
-/*for(var i = 0; i < 50)
-{
-//document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
-  a[i] = api.get('/CAD/:CAD',catchAsync(currenciesController.findOne));
-}*/
+var time = {"tydzień":[], "30 dni":[]}
 
-//var time = ["1", "2", "3"]
+var now = new Date();
+var t1 = [now.setDate(now.getDate()-30), now.setDate(now.getDate()-29), now.setDate(now.getDate()-28), now.setDate(now.getDate()-27)]; //, now.getDate()-26, now.getDate()-25, now.getDate()-24, now.getDate()-23, now.getDate()-22, now.getDate()-21, now.getDate()-20, now.getDate()-19, now.getDate()-18, now.getDate()-17, now.getDate()-16, now.getDate()-15, now.getDate()-14, now.getDate()-13, now.getDate()-12, now.getDate()-11, now.getDate()-10, now.getDate()-9, now.getDate()-8, now.getDate()-7, now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()];
 
+//testy
 var time2 = [ 1, 2, 3, 4, 5, 6 ];
 var time3 = [ 11, 12, 13, 14, 15, 16 ];
 
@@ -98,31 +98,53 @@ window.onload = function() {
       chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);        
     }    
   }
-  /*var z1 = time[timeSel.value];
-  for (var zz in time) {
+    for (var z1 in time) {
      timeSel.options[timeSel.options.length] = new Option(z1, z1);
-   }*/
-  chapterSel.onchange = function() {
+   }
+  timeSel.onchange = function() {
     
+    //wczytać
     
-    
+    if(document.getElementById("t").options[document.getElementById("t").selectedIndex].text == "30 dni")
+    {
+      
+        now = new Date();
+      //console.log(now);
+        //t1 = [now.getDate()-30, now.getDate()-29, now.getDate()-28, now.getDate()-27, now.getDate()-26, now.getDate()-25, now.getDate()-24, now.getDate()-23, now.getDate()-22, now.getDate()-21, now.getDate()-20, now.getDate()-19, now.getDate()-18, now.getDate()-17, now.getDate()-16, now.getDate()-15, now.getDate()-14, now.getDate()-13, now.getDate()-12, now.getDate()-11, now.getDate()-10, now.getDate()-9, now.getDate()-8, now.getDate()-7, now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()];
+       t1 = [now.setDate(now.getDate()-30), now.setDate(now.getDate()-29), now.setDate(now.getDate()-28), now.setDate(now.getDate()-27)];
+       /*for(var i = 0; i < 30)
+        {              
+            //document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
+              a[i] = api.get('/CAD/:CAD',catchAsync(currenciesController.findOne));
+        }*/
+     }
+     if(document.getElementById("t").options[document.getElementById("t").selectedIndex].text == "tydzień")
+    {
+        now = new Date(2023, 1, 18);
+        t1 = [now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()];
+       /*for(var i = 0; i < 7)
+        {              
+            //document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
+              a[i] = api.get('/CAD/:CAD',catchAsync(currenciesController.findOne));
+        }*/
+     }
+     
     WYK = document.getElementById('wykr');
-
-    var now = new Date();
+    
     let selectedOption = document.getElementById("in1").options[document.getElementById("in1").selectedIndex];
     let selectedOption2 = document.getElementById("in2").options[document.getElementById("in2").selectedIndex];
     
     var w1 = {
-    x: [now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()],
-    y: time2,
+    x: t1,
+    y: time2,   //zamiast tego a[]
     type: 'scatter',
     name: selectedOption.text
 
     };
 
     var w2 = {
-    x: [now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()],
-    y: time3,
+    x: t1,
+    y: time3,  //zamiast tego a[]
     type: 'scatter',
     name: selectedOption2.text
     };
@@ -136,15 +158,9 @@ window.onload = function() {
       title:'Wykresy walut'  
     };
 
-    Plotly.plot(WYK, dane, lay );
+    Plotly.newPlot(WYK, dane, lay );
     console.log( Plotly.BUILD ); 
   }
 }
 
 
-/*
-Czas: <select name="t" id="t">
-    <option value="1111" selected="selected">wybierz</option>
-  </select>
-  <br><br>
-  */

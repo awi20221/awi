@@ -38,7 +38,7 @@
   max-width: 90vw;
   max-height: 50vh;
   width: 50vw;
-  height: 37vh;
+  height: 40vh;
   border-radius: 25px;
   padding: 24px 34px;
   text-align: center;
@@ -52,7 +52,7 @@
   box-shadow: 0px 0px 10px 0 rgb(255, 255, 255);
   border: none;
   border-radius: 10px;
-  padding: 8px 10px;
+  padding: 1px 10px;
   font-size: 14px;
   color: rgb(21, 52, 46);
   font-size:medium;
@@ -67,12 +67,13 @@
   opacity: 1;
   cursor: text;
   font-weight: bold;
-  margin-bottom: 7px;
-  margin-top: 7px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .select-graph {
   box-shadow: 0px 0px 20px 0 rgba(255, 255, 255, 0.407);
+  height: 10%;
 }
 
 .select-graph:focus {
