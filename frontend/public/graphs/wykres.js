@@ -1,7 +1,4 @@
-//z dodanym czasem
-
-
-var a = [50], b = [50];
+ var a = [50], b = [50];
 
 var subjectObject = {
   
@@ -63,20 +60,14 @@ var subjectObject = {
   }
 }
 
-var time = {"tydzień":[], "30 dni":[]}
-
-var now = new Date();
-var t1 = [now.setDate(now.getDate()-30), now.setDate(now.getDate()-29), now.setDate(now.getDate()-28), now.setDate(now.getDate()-27)]; //, now.getDate()-26, now.getDate()-25, now.getDate()-24, now.getDate()-23, now.getDate()-22, now.getDate()-21, now.getDate()-20, now.getDate()-19, now.getDate()-18, now.getDate()-17, now.getDate()-16, now.getDate()-15, now.getDate()-14, now.getDate()-13, now.getDate()-12, now.getDate()-11, now.getDate()-10, now.getDate()-9, now.getDate()-8, now.getDate()-7, now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()];
-
 //testy
-var time2 = [ 1, 2, 3, 4, 5, 6 ];
-var time3 = [ 11, 12, 13, 14, 15, 16 ];
+var time2 = [ 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
+var time3 = [ 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16];
 
 window.onload = function() {
   var subjectSel = document.getElementById("typ");
   var topicSel = document.getElementById("in1");
   var chapterSel = document.getElementById("in2");
-  var timeSel = document.getElementById("t");
   for (var x in subjectObject) {
     subjectSel.options[subjectSel.options.length] = new Option(x, x);
     }
@@ -98,69 +89,106 @@ window.onload = function() {
       chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);        
     }    
   }
-    for (var z1 in time) {
-     timeSel.options[timeSel.options.length] = new Option(z1, z1);
-   }
-  timeSel.onchange = function() {
+    
+  chapterSel.onchange = function() {
     
     //wczytać
     
-    if(document.getElementById("t").options[document.getElementById("t").selectedIndex].text == "30 dni")
-    {
-      
-        now = new Date();
-      //console.log(now);
-        //t1 = [now.getDate()-30, now.getDate()-29, now.getDate()-28, now.getDate()-27, now.getDate()-26, now.getDate()-25, now.getDate()-24, now.getDate()-23, now.getDate()-22, now.getDate()-21, now.getDate()-20, now.getDate()-19, now.getDate()-18, now.getDate()-17, now.getDate()-16, now.getDate()-15, now.getDate()-14, now.getDate()-13, now.getDate()-12, now.getDate()-11, now.getDate()-10, now.getDate()-9, now.getDate()-8, now.getDate()-7, now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()];
-       t1 = [now.setDate(now.getDate()-30), now.setDate(now.getDate()-29), now.setDate(now.getDate()-28), now.setDate(now.getDate()-27)];
-       /*for(var i = 0; i < 30)
-        {              
+    /*for(var i = 0; i < 30)
+      {              
             //document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
               a[i] = api.get('/CAD/:CAD',catchAsync(currenciesController.findOne));
-        }*/
-     }
-     if(document.getElementById("t").options[document.getElementById("t").selectedIndex].text == "tydzień")
-    {
-        now = new Date(2023, 1, 18);
-        t1 = [now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()];
-       /*for(var i = 0; i < 7)
-        {              
-            //document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
-              a[i] = api.get('/CAD/:CAD',catchAsync(currenciesController.findOne));
-        }*/
-     }
+       }*/
+    
+    
      
+    d3.csv("https://raw.githubusercontent.com/awi20221/awi/main/daty.txt", function(err, rows)
+     {
+        function unpack(rows, key) {
+       return rows.map(function(row) { return row[key]; });
+     }
+    
     WYK = document.getElementById('wykr');
     
     let selectedOption = document.getElementById("in1").options[document.getElementById("in1").selectedIndex];
     let selectedOption2 = document.getElementById("in2").options[document.getElementById("in2").selectedIndex];
     
     var w1 = {
-    x: t1,
-    y: time2,   //zamiast tego a[]
-    type: 'scatter',
-    name: selectedOption.text
-
+     type: "scatter",
+       mode: "lines",
+       name: selectedOption.text,
+       x: unpack(rows, 'Date'),
+       y: time2,
+       //line: {color: '#17BECF'}
     };
 
     var w2 = {
-    x: t1,
-    y: time3,  //zamiast tego a[]
-    type: 'scatter',
-    name: selectedOption2.text
+     type: "scatter",
+       mode: "lines",
+       name: selectedOption2.text,
+       x: unpack(rows, 'Date'),
+       y: time3,
+       //line: {color: '#17BECF'}
     };
 
     var dane = [w1, w2];
+      
     var lay = {
-      //xaxis: {range: [40, 160], title: "wartość"},
-      //yaxis: {range: [5, 16], title: "czas"},
-      xaxis: {title: "czas"},
-      yaxis: {title: "wartość"},
-      title:'Wykresy walut'  
+      title:'Wykresy walut',
+       xaxis: {
+       autorange: true,
+        range: ['2022-12-17', '2023-02-18'],
+        rangeselector: {buttons: [
+        {
+          count: 1,
+          label: '1m',
+          step: 'month',
+          stepmode: 'backward'
+          },
+          {
+          count: 6,
+          label: '1w',
+          step: 'week',
+          stepmode: 'backward'
+          },
+        {step: 'all'}
+      ]},
+    //rangeslider: {range: ['2022-12-17', '2023-02-18']},
+    type: 'date'
+    },
+    yaxis: {
+        autorange: true,
+        range: [86.8700008333, 138.870004167],
+        type: 'linear'
+      } 
     };
 
     Plotly.newPlot(WYK, dane, lay );
     console.log( Plotly.BUILD ); 
+  })
   }
 }
 
+
+/*
+Czas: <select name="t" id="t">
+    <option value="1111" selected="selected">wybierz</option>
+  </select>
+  <br><br>
+  
+  
+  if(document.getElementById("t").options[document.getElementById("t").selectedIndex].text == "30 dni")
+    {      
+      
+     }
+     if(document.getElementById("t").options[document.getElementById("t").selectedIndex].text == "tydzień")
+    {        
+      for(var i = 0; i < 7)
+        {              
+            //document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
+              a[i] = api.get('/CAD/:CAD',catchAsync(currenciesController.findOne));
+        }
+     }
+  
+  */
 
