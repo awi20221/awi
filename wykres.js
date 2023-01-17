@@ -1,4 +1,6 @@
- var a = [50], b = [50];
+//import axios from "../../axios/axios";
+
+var a = [50], b = [50];
 
 var subjectObject = {
   
@@ -60,23 +62,17 @@ var subjectObject = {
   }
 }
 
-//wczytać
-/*for(var i = 0; i < 50)
-{
-//document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
-  a[i] = api.get('/CAD/:CAD',catchAsync(currenciesController.findOne));
-}*/
 
-//var time = ["1", "2", "3"]
 
-var time2 = [ 1, 2, 3, 4, 5, 6 ];
-var time3 = [ 11, 12, 13, 14, 15, 16 ];
+//testy
+var time2 = [ 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
+var time3 = [ 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16];
 
 window.onload = function() {
   var subjectSel = document.getElementById("typ");
   var topicSel = document.getElementById("in1");
   var chapterSel = document.getElementById("in2");
-  var timeSel = document.getElementById("t");
+  //var timeSel = document.getElementById("t");
   for (var x in subjectObject) {
     subjectSel.options[subjectSel.options.length] = new Option(x, x);
     }
@@ -98,53 +94,117 @@ window.onload = function() {
       chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);        
     }    
   }
-  /*var z1 = time[timeSel.value];
-  for (var zz in time) {
+    /*for (var z1 in time) {
      timeSel.options[timeSel.options.length] = new Option(z1, z1);
    }*/
   chapterSel.onchange = function() {
     
+    //wczytać
     
+    for(var i = 0; i < 30; i++)
+    {     
+        //var now = new Date();
+        const xyz = document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
+        var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
+        let a[i] = api.get('/:${date}/{$xyz}:,catchAsync(currenciesController.findOneByDay)');
+    }
+    for(var i = 0; i < 30; i++)
+    {     
+        //var now = new Date();
+        const xyz = document.getElementById("in2").options[document.getElementById("in2").selectedIndex].text
+        var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
+        let a[i] = api.get('/:${date}/{$xyz}:,catchAsync(currenciesController.findOneByDay)');
+    }
+         
+    d3.csv("https://raw.githubusercontent.com/awi20221/awi/main/daty.txt", function(err, rows)
+     {
+        function unpack(rows, key) {
+       return rows.map(function(row) { return row[key]; });
+     }
     
     WYK = document.getElementById('wykr');
-
-    var now = new Date();
+    
     let selectedOption = document.getElementById("in1").options[document.getElementById("in1").selectedIndex];
     let selectedOption2 = document.getElementById("in2").options[document.getElementById("in2").selectedIndex];
     
     var w1 = {
-    x: [now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()],
-    y: time2,
-    type: 'scatter',
-    name: selectedOption.text
-
+     type: "scatter",
+       mode: "lines",
+       name: selectedOption.text,
+       x: unpack(rows, 'Date'),
+       y: a,
+       //line: {color: '#17BECF'}
     };
 
     var w2 = {
-    x: [now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()],
-    y: time3,
-    type: 'scatter',
-    name: selectedOption2.text
+     type: "scatter",
+       mode: "lines",
+       name: selectedOption2.text,
+       x: unpack(rows, 'Date'),
+       y: a,
+       //line: {color: '#17BECF'}
     };
 
     var dane = [w1, w2];
+      
     var lay = {
-      //xaxis: {range: [40, 160], title: "wartość"},
-      //yaxis: {range: [5, 16], title: "czas"},
-      xaxis: {title: "czas"},
-      yaxis: {title: "wartość"},
-      title:'Wykresy walut'  
+      title:'Wykresy walut',
+       xaxis: {
+       autorange: true,
+        range: ['2022-12-17', '2023-02-18'],
+        rangeselector: {buttons: [
+        {
+          count: 1,
+          label: '1m',
+          step: 'month',
+          stepmode: 'backward'
+          },
+          {
+          count: 7,
+          label: '1w',
+          step: 'day',
+          stepmode: 'backward'
+          },
+        {step: 'all'}
+      ]},
+    //rangeslider: {range: ['2022-12-17', '2023-02-18']},
+    type: 'date'
+    },
+    yaxis: {
+        autorange: true,
+        //range: [86.8700008333, 138.870004167],
+        type: 'linear'
+      } 
     };
 
-    Plotly.plot(WYK, dane, lay );
+    Plotly.newPlot(WYK, dane, lay );
     console.log( Plotly.BUILD ); 
+  })
   }
 }
 
+//var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
+        
 
 /*
 Czas: <select name="t" id="t">
     <option value="1111" selected="selected">wybierz</option>
   </select>
   <br><br>
+  
+  
+  if(document.getElementById("t").options[document.getElementById("t").selectedIndex].text == "30 dni")
+    {      
+      
+     }
+     if(document.getElementById("t").options[document.getElementById("t").selectedIndex].text == "tydzień")
+    {        
+      for(var i = 0; i < 7)
+        {              
+            //document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
+              a[i] = api.get('/CAD/:CAD',catchAsync(currenciesController.findOne));
+        }
+     }
+  
   */
+
