@@ -1,40 +1,34 @@
+  
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Wykresy</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="./wykres.js"></script>
-    <link rel="stylesheet" href="graphs.css">
-  </head>
-
-  <body>
-    <div class="container-graphs">
-      <div class="logo-graph">
-          <img src="../images/logo.png" alt="Logo z napisem AWI" />
-      </div>
-    <form class="form-graph" name="form1" id="form1" action="/action_page.php">
-      <p class="graph-text">Typ</p>
-      <select class="select-graph" name="typ" id="typ">
-        <option value="1" selected="selected">wybierz</option>
-      </select>
-      <p class="graph-text">Instrument pierwszy</p>
-      <select class="select-graph" name="in1" id="in1">
-        <option value="11" selected="selected">wybierz</option>
-      </select>
-      <p class="graph-text">Instrument drugi</p>
-      <select class="select-graph" name="in2" id="in2">
-        <option value="111" selected="selected">wybierz</option>
-      </select>
-      <p class="graph-text">Czas</p>
-      <select class="select-graph" name="t" id="t">
-        <option value="1111" selected="selected">wybierz</option>
-      </select>
-
-    </form>
-
-    <div class="graphs-box" id="wykr" ></div>
-    <div>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+</head>
+  
+<body>
+ <form name="form1" id="form1" action="/action_page.php">
+  Typ: <select name="typ" id="typ">
+    <option value="1" selected="selected">wybierz</option>
+  </select>
+  <br><br>
+  Instrument pierwszy: <select name="in1" id="in1">
+    <option value="11" selected="selected">wybierz</option>
+  </select>
+  <br><br>
+  Instrument drugi: <select name="in2" id="in2">
+    <option value="111" selected="selected">wybierz</option>
+  </select>
+  <br><br> 
+  
+</form> 
+  
+<div id="wykr" style="width:90%;height:350px;"></div>   
+  
+</body>
+ 
+ 
 </html>
