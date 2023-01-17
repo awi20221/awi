@@ -103,14 +103,14 @@ window.onload = function() {
     
     for(var i = 0; i < 30; i++)
     {     
-        //var now = new Date();
+        var now = new Date();
         const xyz = document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
         var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
         let a[i] = api.get('/:${date}/{$xyz}:,catchAsync(currenciesController.findOneByDay)');
     }
     for(var i = 0; i < 30; i++)
     {     
-        //var now = new Date();
+        var now = new Date();
         const xyz = document.getElementById("in2").options[document.getElementById("in2").selectedIndex].text
         var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
         let b[i] = api.get('/:${date}/{$xyz}:,catchAsync(currenciesController.findOneByDay)');
