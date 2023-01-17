@@ -44,7 +44,7 @@ function Footer(props) {
           </Link>
           <Link to="/spolki">Spółki</Link>
           <Link to="/waluty">Kursy&nbsp;walut</Link>
-          <Link to="/kalkulator">Kalkulator</Link>
+          <a href="http://localhost:3000/graphs/wykres_html.html">Wykresy</a> 
           <Link to="/help">Help</Link>
         </p>
         <p>2022 &copy; Aplikacja Wspomagająca Inwestycje</p>
