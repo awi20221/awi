@@ -1,4 +1,4 @@
-//import axios from "../../axios/axios";
+//import axios from "../frontend/axios/axios";
 
 var a = [50], b = [50];
 
@@ -113,7 +113,7 @@ window.onload = function() {
         //var now = new Date();
         const xyz = document.getElementById("in2").options[document.getElementById("in2").selectedIndex].text
         var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
-        let a[i] = api.get('/:${date}/{$xyz}:,catchAsync(currenciesController.findOneByDay)');
+        let b[i] = api.get('/:${date}/{$xyz}:,catchAsync(currenciesController.findOneByDay)');
     }
          
     d3.csv("https://raw.githubusercontent.com/awi20221/awi/main/daty.txt", function(err, rows)
@@ -141,7 +141,7 @@ window.onload = function() {
        mode: "lines",
        name: selectedOption2.text,
        x: unpack(rows, 'Date'),
-       y: a,
+       y: b,
        //line: {color: '#17BECF'}
     };
 
