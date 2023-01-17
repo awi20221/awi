@@ -1,11 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import "./accountOptions.css"
 import axios from "../../axios/axios";
 import Nav from "../../mainComponents/Navigation";
 import jwtDecode from "jwt-decode"
 import  userIcon from "../css/images/user_icon.png";
 
-const login=localStorage.getItem("userLogin");
+let login=localStorage.getItem("userLogin");
+
 
 //zwraca tablice , gdzie 1 el to true lub false w zależności od tego czy token jest dalej aktywny, 2 el to id uzytkownika
 function decodeTokenAndCheckValidity(accessToken) {
@@ -43,6 +44,11 @@ class AccountOptions extends React.Component {
         this.handleSubmitNewPassword = this.handleSubmitNewPassword.bind(this)
         this.handleSubmitDeleteUser = this.handleSubmitDeleteUser.bind(this)
     }
+
+    componentDidMount(){
+        login=localStorage.getItem("userLogin");
+    };
+
 
     setBeginningErrorsState() {
         this.setState({showUnauthorizedMessage: false});
@@ -107,6 +113,8 @@ class AccountOptions extends React.Component {
     }
 
     handleSubmitDeleteUser(event) {
+
+        
         event.preventDefault() //blocks your web http request
         this.setBeginningErrorsState() //zeruje kody błędów
         const [isAvailable, userID] = decodeTokenAndCheckValidity(localStorage.getItem("accessToken"))
@@ -141,7 +149,15 @@ class AccountOptions extends React.Component {
         } else {
             this.setState({showUnauthorizedMessage: true})
         }
+        //this.handleLogout();
     }
+
+    /*handleLogout = () => {
+        localStorage.removeItem("accessToken");
+        localStorage.clear()
+        this.props.history.push('/');
+    }*/
+  
 
 
     render () {
@@ -170,7 +186,7 @@ class AccountOptions extends React.Component {
                 <div className="user-logo-header">
                     <img src={userIcon} className="user-icon" id="user-icon" alt="User icon" />
                     <h1 id="user-note">Your personal account</h1>
-                    <h3 id="user-name">"{login}"</h3>
+                    <h3 id="user-name">User: "{login}"</h3>
                 </div>
                 <div className="change-email-header">
                     <h1 id="change-email">Zmień adres e-mail</h1>
@@ -194,7 +210,8 @@ class AccountOptions extends React.Component {
                 </div>
                 <br/>
                 <form>
-                        <button id="button-delete-user" onClick={this.handleSubmitDeleteUser}>Usuń konto</button>
+                        <button id="button-delete-user" onClick={
+                          this.handleSubmitDeleteUser}>Usuń konto</button>
                 </form>
             </div>
             </>

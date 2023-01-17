@@ -96,9 +96,11 @@ const Register = () => {
       {success ? (
         <section className="RegSucces">
           <h1 className="RegSuccesText">Rejestracja zakończona sukcesem!</h1>
-          <p>
+          <p>Sprawdź skrzynke mailową, gdzie znajduje sie link aktywacyjny</p>
+          <br/>
+          {/*<p>
             <Link to="/login" className="Log-in">Zaloguj się</Link>
-          </p>
+      </p>*/}
         </section>
       ) : (
         <>
