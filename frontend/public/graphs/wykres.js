@@ -1,4 +1,6 @@
- var a = [50], b = [50];
+//import axios from "../frontend/axios/axios";
+
+var a = [50], b = [50];
 
 var subjectObject = {
   
@@ -60,10 +62,7 @@ var subjectObject = {
   }
 }
 
-//var time = {"tydzień":[], "30 dni":[]}
 
-//var now = new Date();
-//var t1 = [now.setDate(now.getDate()-30), now.setDate(now.getDate()-29), now.setDate(now.getDate()-28), now.setDate(now.getDate()-27)]; //, now.getDate()-26, now.getDate()-25, now.getDate()-24, now.getDate()-23, now.getDate()-22, now.getDate()-21, now.getDate()-20, now.getDate()-19, now.getDate()-18, now.getDate()-17, now.getDate()-16, now.getDate()-15, now.getDate()-14, now.getDate()-13, now.getDate()-12, now.getDate()-11, now.getDate()-10, now.getDate()-9, now.getDate()-8, now.getDate()-7, now.getDate()-6, now.getDate()-5, now.getDate()-4, now.getDate()-3, now.getDate()-2, now.getDate()-1, now.getDate()];
 
 //testy
 var time2 = [ 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
@@ -102,14 +101,21 @@ window.onload = function() {
     
     //wczytać
     
-    /*for(var i = 0; i < 30)
-        {              
-            //document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
-              a[i] = api.get('/CAD/:CAD',catchAsync(currenciesController.findOne));
-        }*/
-    
-    
-     
+    for(var i = 0; i < 30; i++)
+    {     
+        var now = new Date();
+        const xyz = document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
+        var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
+        let a[i] = api.get('/:${date}/{$xyz}:,catchAsync(currenciesController.findOneByDay)');
+    }
+    for(var i = 0; i < 30; i++)
+    {     
+        var now = new Date();
+        const xyz = document.getElementById("in2").options[document.getElementById("in2").selectedIndex].text
+        var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
+        let b[i] = api.get('/:${date}/{$xyz}:,catchAsync(currenciesController.findOneByDay)');
+    }
+         
     d3.csv("https://raw.githubusercontent.com/awi20221/awi/main/daty.txt", function(err, rows)
      {
         function unpack(rows, key) {
@@ -126,7 +132,7 @@ window.onload = function() {
        mode: "lines",
        name: selectedOption.text,
        x: unpack(rows, 'Date'),
-       y: time2,
+       y: a,
        //line: {color: '#17BECF'}
     };
 
@@ -135,7 +141,7 @@ window.onload = function() {
        mode: "lines",
        name: selectedOption2.text,
        x: unpack(rows, 'Date'),
-       y: time3,
+       y: b,
        //line: {color: '#17BECF'}
     };
 
@@ -177,6 +183,8 @@ window.onload = function() {
   }
 }
 
+//var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
+        
 
 /*
 Czas: <select name="t" id="t">
