@@ -1,5 +1,6 @@
-import axios from "frontend/svc/axios/axios";
+import axios from "../../src/axios/axios.js";
 
+let a = [], b = [], c = [];
 
 var subjectObject = {
   
@@ -66,6 +67,7 @@ var subjectObject = {
 //testy
 var time2 = [ 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
 var time3 = [ 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16];
+a.push(33); a.push(39); c.push(36); c.push(59);
 
 window.onload = function() {
   var subjectSel = document.getElementById("typ");
@@ -92,17 +94,17 @@ window.onload = function() {
       chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);        
     }    
   }
-    
-  chapterSel.onchange = function() {
+    var temp1 = Math.floor((Math.random() * 2) + (-2));
+    chapterSel.onchange = function() {
     
     //wczytać
      
-    //let a = [30], b = [30];
-    let a = [], b = [];
-
+    
+    
+    async function fetchCurrencies() {
     //console.log(lastDate);
        const xyz =  document.getElementById("in1").options[document.getElementById("in2").selectedIndex].text;
-      let url = "http://localhost:3001/api/currencies/code" +  ${xyz};
+      let url = "http://localhost:3001/api/currencies/" +  ${xyz};
       a = await axios
       .get(url)
       .then((response) => {
@@ -110,7 +112,6 @@ window.onload = function() {
         setCurrencies(response.data.currencies);        
       })
       xyz =  document.getElementById("in2").options[document.getElementById("in2").selectedIndex].text;
-      let url = "http://localhost:3001/api/currencies/code" +  ${xyz};
       b = await axios
       .get(url)
       .then((response) => {
@@ -118,10 +119,30 @@ window.onload = function() {
         setCurrencies(response.data.currencies);
         
       })
-    
-      
+    }
+    /*
+    var risk, rev_r, factor; 
+     var temp = a[1]+(a[1]-a[0])/a[0];
+     b.push(temp);    
+     temp = (b[0]-a[1])/a[1];
+     factor = Math.floor((Math.random() * 2) + (-2));
+     temp = (temp+factor)+a[1]; 
+     if(temp === 0) temp+=0.01
+     b.push(temp);
+      console.log(b);
+     for(var i = 2; i<30; i++) 
+     {
+       temp = (b[i-2] - b[i-1])/b[i-1];
+       risk = (b[i-2]-b[i-1])/10;
+       rev_r = risk * (-1);
+       factor = Math.floor((Math.random() * risk) +rev_r);
+       temp = (temp+factor)+temp;
+       b.push(temp);
+       console.log(b[i]);
+     }
+      */
        
-    d3.csv("https://raw.githubusercontent.com/awi20221/awi/Staging/frontend/public/graphs/daty.txt", function(err, rows)
+    d3.csv("https://raw.githubusercontent.com/awi20221/awi/main/daty.txt", function(err, rows)
      {
         function unpack(rows, key) {
        return rows.map(function(row) { return row[key]; });
@@ -146,7 +167,7 @@ window.onload = function() {
        mode: "lines",
        name: selectedOption2.text,
        x: unpack(rows, 'Date'),
-       y: b,
+       y: b ,
        //line: {color: '#17BECF'}
     };
 
@@ -156,7 +177,7 @@ window.onload = function() {
       title:'Wykresy walut',
        xaxis: {
        autorange: true,
-        range: ['2022-12-17', '2023-02-18'],
+        range: ['2022-11-17', '2023-02-18'],
         rangeselector: {buttons: [
         {
           count: 1,
