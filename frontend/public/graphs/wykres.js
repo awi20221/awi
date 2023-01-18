@@ -102,7 +102,7 @@ window.onload = function() {
     async function fetchCurrencies() {
     //console.log(lastDate);
        const xyz =  document.getElementById("in1").options[document.getElementById("in2").selectedIndex].text;
-      let url = "http://localhost:3001/api/frontend/src/components/shares/currencies/" +  ${xyz};
+      let url = "http://localhost:3001/api/currencies/" +  ${xyz};
       a = await axios
       .get(url)
       .then((response) => {
@@ -110,7 +110,7 @@ window.onload = function() {
         setCurrencies(response.data.currencies);        
       })
       xyz =  document.getElementById("in2").options[document.getElementById("in2").selectedIndex].text;
-      let url = "http://localhost:3001/api/frontend/src/components/shares/currencies/" +  ${xyz};
+      let url = "http://localhost:3001/api/currencies/" +  ${xyz};
       b = await axios
       .get(url)
       .then((response) => {
