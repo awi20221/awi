@@ -1,6 +1,5 @@
-//import axios from "../frontend/axios/axios";
+//import axios from "../../axios/axios";
 
-var a = [50], b = [50];
 
 var subjectObject = {
   
@@ -72,7 +71,6 @@ window.onload = function() {
   var subjectSel = document.getElementById("typ");
   var topicSel = document.getElementById("in1");
   var chapterSel = document.getElementById("in2");
-  //var timeSel = document.getElementById("t");
   for (var x in subjectObject) {
     subjectSel.options[subjectSel.options.length] = new Option(x, x);
     }
@@ -94,29 +92,36 @@ window.onload = function() {
       chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);        
     }    
   }
-    /*for (var z1 in time) {
-     timeSel.options[timeSel.options.length] = new Option(z1, z1);
-   }*/
+    
   chapterSel.onchange = function() {
     
     //wczytać
+     
+    let a = [30], b = [30];
     
-    for(var i = 0; i < 30; i++)
-    {     
-        var now = new Date();
-        const xyz = document.getElementById("in1").options[document.getElementById("in1").selectedIndex].text
-        var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
-        let a[i] = api.get('/:${date}/{$xyz}:,catchAsync(currenciesController.findOneByDay)');
+    async function fetchCurrencies() {
+    //console.log(lastDate);
+       const xyz =  document.getElementById("in1").options[document.getElementById("in2").selectedIndex].text;
+      let url = "http://localhost:3001/api/currencies/" +  ${xyz};
+      a = await axios
+      .get(url)
+      .then((response) => {
+        console.log(response.data.currencies);
+        setCurrencies(response.data.currencies);        
+      })
+      xyz =  document.getElementById("in2").options[document.getElementById("in2").selectedIndex].text;
+      let url = "http://localhost:3001/api/currencies/" +  ${xyz};
+      b = await axios
+      .get(url)
+      .then((response) => {
+        console.log(response.data.currencies);
+        setCurrencies(response.data.currencies);
+        
+      })
     }
-    for(var i = 0; i < 30; i++)
-    {     
-        var now = new Date();
-        const xyz = document.getElementById("in2").options[document.getElementById("in2").selectedIndex].text
-        var date = String(now.getFullYear() + '-' + (now.getMonth()) + '-' + now.getDate());
-        let b[i] = api.get('/:${date}/{$xyz}:,catchAsync(currenciesController.findOneByDay)');
-    }
-         
-    d3.csv("https://raw.githubusercontent.com/awi20221/awi/main/daty.txt", function(err, rows)
+      
+       
+    d3.csv("https://raw.githubusercontent.com/awi20221/awi/Staging/frontend/public/graphs/daty.txt", function(err, rows)
      {
         function unpack(rows, key) {
        return rows.map(function(row) { return row[key]; });
