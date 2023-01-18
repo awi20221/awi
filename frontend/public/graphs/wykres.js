@@ -98,8 +98,7 @@ window.onload = function() {
     //wczytać
      
     let a = [30], b = [30];
-    
-    async function fetchCurrencies() {
+
     //console.log(lastDate);
        const xyz =  document.getElementById("in1").options[document.getElementById("in2").selectedIndex].text;
       let url = "http://localhost:3001/api/currencies/code" +  ${xyz};
@@ -118,7 +117,7 @@ window.onload = function() {
         setCurrencies(response.data.currencies);
         
       })
-    }
+    
       
        
     d3.csv("https://raw.githubusercontent.com/awi20221/awi/Staging/frontend/public/graphs/daty.txt", function(err, rows)
