@@ -1,3 +1,4 @@
+import axios from "../../src/axios/axios.js";
 var a = [], b = [];
 
 var subjectObject = {
@@ -82,14 +83,14 @@ window.onload = function() {
    topicSel.onchange = function() {
      
      //wczytaj
-     const xyz =  document.getElementById("in1").options[document.getElementById("in2").selectedIndex].text;
+     /*const xyz =  document.getElementById("in1").options[document.getElementById("in2").selectedIndex].text;
       let url = "http://localhost:3001/api/currencies/" +  ${xyz};
       a = await axios
       .get(url)
       .then((response) => {
         console.log(response.data.currencies);
         setCurrencies(response.data.currencies);        
-      })
+      })*/
       
      
      var risk, rev_r, factor; 
@@ -138,7 +139,7 @@ window.onload = function() {
        title:'Wykresy walut',
        xaxis: {
        autorange: true,
-        range: ['2023-12-17', '2024-02-18'],
+        range: ['2023-01-17', '2023-03-17'],
         rangeselector: {buttons: [
         {
           count: 1,
@@ -154,7 +155,7 @@ window.onload = function() {
           },
         {step: 'all'}
       ]},
-    rangeslider: {range: ['2023-12-17', '2024-02-18']},
+    rangeslider: {range: ['2023-01-17', '2023-03-17']},
     type: 'date'
   },
   yaxis: {
