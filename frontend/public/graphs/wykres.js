@@ -1,4 +1,5 @@
 import axios from "../../src/axios/axios.js";
+//const axios = require('axios'); 
 
 let a = [], b = [], c = [];
 
