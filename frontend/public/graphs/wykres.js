@@ -98,6 +98,7 @@ window.onload = function() {
     //wczytać
      
     let a = [30], b = [30];
+    //let a = [], b = [];
 
     //console.log(lastDate);
        const xyz =  document.getElementById("in1").options[document.getElementById("in2").selectedIndex].text;
