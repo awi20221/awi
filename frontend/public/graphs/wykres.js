@@ -112,6 +112,7 @@ window.onload = function() {
         setCurrencies(response.data.currencies);        
       })
       xyz =  document.getElementById("in2").options[document.getElementById("in2").selectedIndex].text;
+      url = "http://localhost:3001/api/currencies/" +  ${xyz};
       b = await axios
       .get(url)
       .then((response) => {
