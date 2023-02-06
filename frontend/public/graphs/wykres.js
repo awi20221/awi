@@ -70,8 +70,8 @@ var subjectObject = {
 //testy
 var time2 = [ 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
 var time3 = [ 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16];
-var ddd = Math.floor((Math.random() * 500) + 300);
-var eee = Math.floor((Math.random() * 500) + 300);
+var ddd = Math.floor((Math.random() * 500) + 50);
+var eee = Math.floor((Math.random() * 500) + 50);
 a.push(ddd); a.push(ddd+0.3); c.push(eee); c.push(eee+0.9);
 t0.push(ddd); t1.push(eee);
 
