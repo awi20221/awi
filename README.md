@@ -6,7 +6,7 @@ This web application project was developed as a final assignment for the Softwar
 
 *As this project represents our first encounter with web programming, it's important to note that it has several flaws and imperfections. We are aware of these issues and see them as opportunities for learning and improvement in our future work.*
 
-For details, please familiarize yourself with [project documentation](https://github.com/awi20221/awi/edit/Staging/documentation.pdf)
+For details, please familiarize yourself with [project documentation](https://github.com/awi20221/awi/blob/Staging/documentation.pdf)
 
 
 ## Features
